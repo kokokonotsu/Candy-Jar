@@ -98,8 +98,10 @@ const colorModal = document.getElementById("color-modal");
 const colorModalButton = document.getElementById("add-pill-button");
 const colorModalClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
+const tools = document.getElementsByClassName("tool");
+const bigHandPointerButton = document.getElementById("big-hand-pointer-button");
 const rootCSS = window.getComputedStyle(document.documentElement);
-const html = document.getElementsByClassName("html")
+const html = document.getElementsByClassName("html")[0];
 //Set Attributes for all Non-Jar-Draggables
 for(let i = 0; i < draggables.length; i++){
     draggables[i].setAttribute("ondragstart", "dragColor(event)");
@@ -127,6 +129,10 @@ for(let i = 0; i < dropClickLocations.length; i++){
     dropClickLocations[i].setAttribute("ondragover", "allowDrop(event)");
     dropClickLocations[i].setAttribute("ondrop", "drop(event)");
 }
+for(let i = 0; i < tools.length; i++){
+    tools[i].setAttribute("onclick", "replaceCursor(event)");
+}
+bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
 function insertJar(){
     var jarContainer = document.getElementsByClassName("jar-container")[0];
@@ -174,7 +180,7 @@ function dragLeave(event){
 function addDragLocation(){
     const dragLocationElement = document.getElementsByClassName("drag-location")[1];
     const mainElement = document.getElementsByClassName("main-content-container")[0]; 
-    for(let i = 0; i < 102; i++){
+    for(let i = 0; i < 20; i++){
         mainElement.appendChild(dragLocationElement.cloneNode(true));
     }
 }
@@ -194,6 +200,15 @@ function currentMousePosition(e){
         pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
         pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
+}
+function replaceCursor(event){
+    if(event.target.classList.contains("tool")){
+        html.classList.add("no-cursor");
+        if(event.target == tools[0]){
+            html.classList.add("big-pointer");
+        }
+    }
+    console.log(event.target);
 }
 //Event Listeners
 window.addEventListener("load", insertJar);
