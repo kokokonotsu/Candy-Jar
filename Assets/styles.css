@@ -2,6 +2,7 @@
     --candyColor: #dddddd;
     --fontColor: #111111;
     --bodyColor: #333333;
+    --tronBlue: #18CAE6;
 }
 html{
     width: 100%;
@@ -15,8 +16,8 @@ body{
 }
 .jar-container{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    bottom: 10px;
+    right: 0;
     height: 15rem;
     width: 10rem;
     fill: white;
