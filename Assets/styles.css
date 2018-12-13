@@ -50,15 +50,27 @@ header .page-title{
     background-color: #00000060;
 }
 .modal-content{
-    display: flex;
+    position: relative;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     background-color: var(--modalColor);
     margin: 15% auto;
     border: 2px solid var(--bodyColor);
     width: 40%;
     height: 40%;
+    animation: fade-in;
+    animation-duration: 0.4s;
+}
+.modal-h1{
+    margin: 0;
+    display: block;
+}
+#color-modal-close{
+    float: right;
+    font-size: 2rem;
+    cursor: pointer;
 }
 .modal-content form input{
     margin: 5px;
@@ -75,9 +87,7 @@ header .page-title{
     /* background: none;
     border: none;
     outline: none; */
-}
-#add-pull-button:hover{
-    cursor: auto;
+    cursor: pointer;
 }
 .pill{
     border-radius: 50%;
@@ -146,4 +156,14 @@ main{
     width: 50%;
     height: auto;
     border: none;
+}
+@keyframes fade-in{
+    from{
+        top: -300px;
+        opacity: 0;
+    }
+    to{
+        top: 0;
+        opacity: 1;
+    }
 }
