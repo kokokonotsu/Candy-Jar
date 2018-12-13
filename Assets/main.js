@@ -56,6 +56,8 @@ for(let i = 0; i < draggables.length; i++){
 for(let i = 0; i < dragLocations.length; i++){
     dragLocations[i].setAttribute("ondragover", "allowDrop(event)");
     dragLocations[i].setAttribute("ondrop", "dropColor(event)");
+    dragLocations[i].setAttribute("ondragenter", "dragEnter(event)");
+    dragLocations[i].setAttribute("ondragleave", "dragLeave(event)");
 }
 //Set Attributes for all Jar-Draggables
 for(let i = 0; i < jarDraggables.length; i++){
@@ -94,10 +96,20 @@ function dropColor(event){
     event.target.style.backgroundColor = colorOne;
     event.target.style.borderColor = colorTwo;
 }
+function dragEnter(event){
+    if(event.target.classList.contains("drag-location")){
+        event.target.style.borderStyle = "dashed";
+    }
+}
+function dragLeave(event){
+    if(event.target.className == "drag-location"){
+        event.target.style.borderStyle = "solid";
+    }
+}
 function addDragLocation(){
     const dragLocationElement = document.getElementsByClassName("drag-location")[1];
     const mainElement = document.getElementsByClassName("main-content-container")[0]; 
-    for(let i = 0; i < 58; i++){
+    for(let i = 0; i < 102; i++){
         mainElement.appendChild(dragLocationElement.cloneNode(true));
     }
 }
