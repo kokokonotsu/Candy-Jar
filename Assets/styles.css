@@ -95,9 +95,6 @@ header .page-title{
     width: 50px;
     background: radial-gradient(#18CAE6, black);
 }
-main{
-    height: 90vh;
-}
 .main-content-container{
     display: grid;
     grid-template:
