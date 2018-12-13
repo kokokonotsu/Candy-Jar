@@ -47,6 +47,8 @@ const dragLocations = document.getElementsByClassName("drag-location");
 const jarDragLocations = document.getElementsByClassName("jar-drag-location");
 const colorModal = document.getElementById("color-modal");
 const colorModalButton = document.getElementById("add-pill-button");
+const colorModalClose = document.getElementById("color-modal-close");
+const rootCSS = window.getComputedStyle(document.documentElement);
 //Set Attributes for all Non-Jar-Draggables
 for(let i = 0; i < draggables.length; i++){
     draggables[i].setAttribute("ondragstart", "dragColor(event)");
@@ -114,9 +116,16 @@ function addDragLocation(){
         mainElement.appendChild(dragLocationElement.cloneNode(true));
     }
 }
+//Removes all DOM-styling on Drag-Locations
+function resetDragLocations(){
+    for(let i = 0; i < dragLocations.length; i++){
+        dragLocations[i].removeAttribute("style");
+    }
+}
 //Event Listeners
 window.addEventListener("load", insertJar);
 window.addEventListener("load", addDragLocation);
 colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
+colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
