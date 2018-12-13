@@ -95,6 +95,7 @@ function dropColor(event){
     var colorTwo = event.dataTransfer.getData("colorTwo");
     event.target.style.backgroundColor = colorOne;
     event.target.style.borderColor = colorTwo;
+    event.target.style.borderStyle = "solid";
 }
 function dragEnter(event){
     if(event.target.classList.contains("drag-location")){
