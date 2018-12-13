@@ -6,7 +6,17 @@
     <title>Candy Jar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="Assets/styles.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<div class="modal" id="color-modal">
+        <div class="modal-content">
+            <form action="" method="POST">
+                <input type="color" id="color-one-picker">
+                <input type="color" id="color-two-picker">
+                <input type="submit" id="color-modal-submit">
+            </form>
+        </div>
+    </div>
 <body>
     <header>
         <h1 class="page-title">Ethan's Website</h1>
@@ -14,7 +24,7 @@
     <main>
         <div class="main-content-container">
             <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
-                <div class="drag-block" id="drag-block" ondragstart="drag(event)" draggable="true"></div>
+                <div class="drag-block draggable" id="drag-block" draggable="true"></div>
             </div>
             <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
             </div>
@@ -23,8 +33,10 @@
     <footer>
 
     </footer>
+    <button id="add-pill-button"><span class="material-icons">tag_faces</span></button>
     <div class="jar-container">
-        
+        <div class="pill draggable">
+        </div>
     </div>
 </body>
 <script src="Assets/main.js"></script>

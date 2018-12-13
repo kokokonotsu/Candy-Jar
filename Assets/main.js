@@ -41,22 +41,32 @@ var jar = '<svg viewBox="0 0 746.5 1150" xmlns="http://www.w3.org/2000/svg">'
 + '</g>'
 + '</svg>'; 
 var dragBlock = document.getElementById("drag-block");
+var draggables = document.getElementsByClassName("draggable");
+var colorModal = document.getElementById("color-modal");
+var colorModalButton = document.getElementById("add-pill-button");
+for(let i = 0; i < draggables.length; i++){
+    draggables[i].setAttribute("ondragstart", "drag(event)");
+    draggables[i].setAttribute("draggable", "true");
+}
 //Functions
 function insertJar(){
     var jarContainer = document.getElementsByClassName("jar-container")[0];
-    jarContainer.insertAdjacentHTML("afterbegin", jar);
+    jarContainer.insertAdjacentHTML("beforeend", jar);
 }
 function allowDrop(event){
     event.preventDefault();
 }
 function drag(event){
-    event.dataTransfer.setData("text", "#18CAE6");
+    event.dataTransfer.setData("colorOne", "black");
+    event.dataTransfer.setData("colorTwo", "#18CAE6");
     console.log(event.target.style.backgroundColor);
 }
 function drop(event){
     event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    event.target.style.backgroundColor = data;
+    var colorOne = event.dataTransfer.getData("colorOne");
+    var colorTwo = event.dataTransfer.getData("colorTwo");
+    event.target.style.backgroundColor = colorOne;
+    event.target.style.borderColor = colorTwo;
 }
 function addDragLocation(){
     const dragLocationElement = document.getElementsByClassName("drag-location")[1];
@@ -68,4 +78,6 @@ function addDragLocation(){
 //Event Listeners
 window.addEventListener("load", insertJar);
 window.addEventListener("load", addDragLocation);
+colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
+window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
