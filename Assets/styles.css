@@ -1,7 +1,8 @@
 :root{
     --candyColor: #dddddd;
     --fontColor: #111111;
-    --bodyColor: #333333;
+    --bodyColor: #777777;
+    --mainColor: #333333;
     --tronBlue: #18CAE6;
 }
 @font-face{
@@ -32,7 +33,36 @@ header{
 }
 header .page-title{
     font-family: "Tron", sans-serif;
+    color: var(--fontColor);
     margin: 0;
+}
+.main-content-container{
+    display: grid;
+    grid-template:
+    ". . . . . . . . . . . . . . ." 10vh
+    ". . . . . . . . . . . . . . ." 10vh
+    ". . . . . . . . . . . . . . ." 10vh
+    ". . . . . . . . . . . . . . ." 10vh
+    / 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh 10vh;
+    height: 90vh;
+}
+.drag-location{
+    margin: 0;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 10vh;
+    border: 1px solid black;
+}
+.drag-block{
+    position: absolute;
+    z-index: 10;
+    height: 9.5vh;
+    width:  9.5vh;
+    background-color: #333333;
+    border-radius: 7px;
 }
 .jar-container{
     position: absolute;

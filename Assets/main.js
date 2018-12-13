@@ -1,3 +1,4 @@
+//Global Variables
 var jar = '<svg viewBox="0 0 746.5 1150" xmlns="http://www.w3.org/2000/svg">' 
 + '<defs><clipPath id="a"><path d="m466,189.25v1.2812l-259,6.97s13,44 8,59-97,103.19-97,193.5v566s15.75,75.25 29.5,106.5 32.5,88.75 113.75,98.75c75.811,4.2286 79.478,12.75 228.75,12.75s154.26-3.9563 228.75-12.75c81.25-10 100-67.5 113.75-98.75 13.75-31.2 29.5-106.4 29.5-106.4v-566c0-90.312-92-178.5-97-193.5s8-59 8-59l-259-6.9688v-1.2812l-24,.65625z"/>'
 + '</clipPath><clipPath id="g"><path d="m490 85c-94.287 0-275.65 5.4645-282.72 9-6.4786 3.2393-18.375 17.771-20.406 20.281 28.61-5.33 104.5-13.28 303.13-13.28s274.52 7.9481 303.12 13.281c-2.03-2.51-13.92-17.041-20.4-20.28-7.07-3.536-188.43-9-282.72-9z"/>'
@@ -38,9 +39,33 @@ var jar = '<svg viewBox="0 0 746.5 1150" xmlns="http://www.w3.org/2000/svg">'
 + '<path d="m186.06,134.34c-5.2064.90051-7.75,2.0106-7.75,5.8438s.98984,4.9543 7.6875,3.8125h.0937v-9.6562h-.0312zm607.84,0v9.6562h.0937c6.6977,1.1418 7.6875.0206 7.6875-3.8125s-2.5436-4.9432-7.75-5.8438h-.0312z" opacity=".359"/>'
 + '<path d="m490,125c-101.94,0-197.92.0384-303.94,9.3438-5.2064.90051-7.75,2.0106-7.75,5.8438s.98984,4.9543 7.6875,3.8125c102.7-8.8558 202.17-9 304-9s201.3.14425 304,9c6.6977,1.1418 7.6875.0206 7.6875-3.8125s-2.5436-4.9432-7.75-5.8438c-106.02-9.3-202-9.34-303.94-9.34zm0,1.5c101.92,0 197.85.048 303.78,9.3438h.0312c2.4467.43295 4.2166.94885 5.125,1.5625 .9302.62839 1.25,1.1965 1.25,2.7812 0,.89372-.0716,1.5699-.1875,1.9375s-.16514.41193-.375.53125c-.41973.23865-2.1184.43019-5.375-.125l-.0625-.0312h-.0625c-102.78-8.8628-202.29-9-304.12-9s-201.34.13725-304.12,9h-.0625l-.0625.0312c-3.2566.55519-4.9553.36365-5.375.125-.20986-.11932-.25912-.16369-.375-.53125s-.1875-1.0438-.1875-1.9375c0-1.5848.3198-2.1529 1.25-2.7812 .90838-.61365 2.6783-1.1296 5.125-1.5625h.0312c105.94-9.28 201.87-9.33 303.79-9.33z" clip-path="url(#e)" filter="url(#b)"/>'
 + '</g>'
-+ '</svg>';
++ '</svg>'; 
+var dragBlock = document.getElementById("drag-block");
+//Functions
 function insertJar(){
     var jarContainer = document.getElementsByClassName("jar-container")[0];
     jarContainer.insertAdjacentHTML("afterbegin", jar);
 }
+function allowDrop(event){
+    event.preventDefault();
+}
+function drag(event){
+    event.dataTransfer.setData("text", "#18CAE6");
+    console.log(event.target.style.backgroundColor);
+}
+function drop(event){
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text");
+    event.target.style.backgroundColor = data;
+}
+function addDragLocation(){
+    const dragLocationElement = document.getElementsByClassName("drag-location")[1];
+    const mainElement = document.getElementsByClassName("main-content-container")[0]; 
+    for(let i = 0; i < 58; i++){
+        mainElement.appendChild(dragLocationElement.cloneNode(true));
+    }
+}
+//Event Listeners
 window.addEventListener("load", insertJar);
+window.addEventListener("load", addDragLocation);
+// window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });

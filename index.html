@@ -12,7 +12,13 @@
         <h1 class="page-title">Ethan's Website</h1>
     </header>
     <main>
-
+        <div class="main-content-container">
+            <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
+                <div class="drag-block" id="drag-block" ondragstart="drag(event)" draggable="true"></div>
+            </div>
+            <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
+            </div>
+        </div>
     </main>
     <footer>
 
