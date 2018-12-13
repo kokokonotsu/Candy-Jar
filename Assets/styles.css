@@ -77,12 +77,9 @@ header .page-title{
     outline: none; */
 }
 #add-pull-button:hover{
-    cursor: pointer;
+    cursor: auto;
 }
 .pill{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -123,4 +120,23 @@ header .page-title{
     height: 15rem;
     width: 10rem;
     fill: white;
+}
+.jar-ul{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 70%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.jar-li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
+    border: none;
 }
