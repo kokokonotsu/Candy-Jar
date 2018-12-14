@@ -96,10 +96,10 @@ header .page-title{
 .pill{
     height: 50px;
     width: 50px;
-    background-image: url("Blue-Pill.png");
-    position: absolute;
-    top: 50%;
-    left: 50%;
+}
+.pill > img{
+    height: 50px;
+    width: 50px;
 }
 main{
     position: relative;
