@@ -30,7 +30,7 @@ body{
 }
 header{
     width: 100%;
-    height: 10vh;
+    height: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,29 +99,37 @@ header .page-title{
     width: 50px;
     background: radial-gradient(#18CAE6, black);
 }
+.pill{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 main{
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 .main-content-container{
     display: inline-grid;
     grid-template:
-    ". . . . ." 10vh
-    ". . . . ." 10vh
-    ". . . . ." 10vh
-    ". . . . ." 10vh
-    / 10vh 10vh 10vh 10vh 10vh;
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    ". . . . . . . . . . . . . . . ." auto
+    / 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
     height: 100%;
-    width: 100%;
 }
 .tool-box{
-    position: absolute;
-    right: 0;
-    top: 0;
+    display: inline-block;
     width: 20vw;
-    height: 100%;
     border: 2px solid var(--mainColor);
 }
 .tool-list{
+    height: 100%;
     margin: 0;
     padding: 0;
     list-style-type: none;
@@ -146,7 +154,7 @@ main{
     height: 100px;
 }
 .custom-cursor-big-hand-pointer{
-    cursor: url("Large-Hand-Pointer-Resized.png") 20 4, auto;
+    cursor: url("Large-Hand-Pointer-Resized.png") 20 1, auto;
 }
 .drag-location{
     margin: 0;
@@ -154,8 +162,8 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 10vh;
-    width: 10vh;
+    height: 2vw;
+    width: 2vw;
     border: 1px solid black;
 }
 .drag-block{

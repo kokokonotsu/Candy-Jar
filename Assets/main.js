@@ -185,9 +185,9 @@ function dragLeave(event){
     }
 }
 function addDragLocation(){
-    const dragLocationElement = document.getElementsByClassName("drag-location")[1];
+    const dragLocationElement = document.getElementsByClassName("drag-location")[0];
     const mainElement = document.getElementsByClassName("main-content-container")[0]; 
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < 255; i++){
         mainElement.appendChild(dragLocationElement.cloneNode(true));
     }
 }
@@ -200,7 +200,6 @@ function resetDragLocations(){
 function replaceCursor(e){
         const pill = e.target.cloneNode(true);
     if(e.target.classList.contains("pill")){
-        pill.setAttribute("position", "absolute");
         //Adds Custom Cursor to HTML
         html.appendChild(pill);
         //Disables Default Cursor
