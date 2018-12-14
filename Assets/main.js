@@ -234,9 +234,9 @@ function customCursor(){
 //Insert Pills
 function insertPills(){
     const pill = document.createElement("img");
-    pill.setAttribute("src", "Assets/Blue-Pill.png");
+    pill.setAttribute("src", "Assets/Blue-Pill-Resized-320p.png");
     for(let i = 0; i < pills.length; i++){
-        pills[i].appendChild(pill);
+        pills[i].appendChild(pill.cloneNode(true));
     }
 }
 //Event Listeners
