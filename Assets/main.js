@@ -133,7 +133,7 @@ for(let i = 0; i < dropClickLocations.length; i++){
 }
 //Set Attributes for all Tools
 for(let i = 0; i < tools.length; i++){
-    tools[i].setAttribute("onclick", "customCursor()");
+    tools[i].setAttribute("onclick", "customCursor(event)");
 }
 //bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
@@ -231,8 +231,11 @@ function replaceCursor(e){
     }
     console.log("I am running");
 }
-function customCursor(){
-    html.classList.add("custom-cursor-big-hand-pointer");
+function customCursor(event){
+    if(event.target.id == "big-hand-pointer-png"){ html.classList.add("custom-cursor-big-hand-pointer"); }
+    else if(event.target.id != "big-hand-pointer-png"){ html.classList.remove("custom-cursor-big-hand-pointer"); }
+    if(event.target.id == "paint-brush-cursor-png"){ html.classList.add("custom-cursor-paint-brush"); }
+    else if(event.target.id != "paint-brush-cursor-png"){ html.classList.remove("custom-cursor-paint-brush"); }
 }
 //Insert Pills
 function insertPills(){
