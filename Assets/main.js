@@ -100,7 +100,7 @@ const colorModalButton = document.getElementById("add-pill-button");
 const colorModalClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
 const tools = document.getElementsByClassName("tool");
-const bigHandPointerButton = document.getElementById("big-hand-pointer-button");
+const bigHandPointerPng = document.getElementById("big-hand-pointer-png");
 const rootCSS = window.getComputedStyle(document.documentElement);
 const html = document.getElementsByClassName("html")[0];
 //Set Attributes for all Non-Jar-Draggables
@@ -131,9 +131,9 @@ for(let i = 0; i < dropClickLocations.length; i++){
     dropClickLocations[i].setAttribute("ondrop", "drop(event)");
 }
 for(let i = 0; i < tools.length; i++){
-    tools[i].setAttribute("onclick", "replaceCursor(event)");
+    tools[i].setAttribute("onclick", "customCursor()");
 }
-bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
+//bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
 function insertJar(){
     var jarContainer = document.getElementsByClassName("jar-container")[0];
@@ -191,25 +191,45 @@ function resetDragLocations(){
         dragLocations[i].removeAttribute("style");
     }
 }
-function currentMousePosition(e){
-    e = e || window.event;
+// function replaceCursor(e){
+//         const bigHandPointerImg = document.createElement("img");
+//         bigHandPointerImg.classList.add("big-hand-pointer-img");
+//         bigHandPointerImg.setAttribute("src", "Assets/Large-Hand-Pointer.png");
+//     if(e.target == bigHandPointerPng){
+//         //Adds Custom Cursor to HTML
+//         html.appendChild(bigHandPointerImg);
+//         //Disables Default Cursor
+//         html.classList.add("no-cursor");
+//         //Add Class to Custom Cursor
+//         bigHandPointerImg.classList.add("current-cursor");
+//         document.onmousemove = trackCursorPos;
+//     }
+//     function trackCursorPos(event) {
+//         var eventDoc, doc, body, pageX, pageY;
 
-    var pageX = e.pageX;
-    var pageY = e.pageY;
+//         event = event || window.event; //For IE
 
-    if (pageX === undefined) {
-        pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-        pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
-}
-function replaceCursor(event){
-    if(event.target.classList.contains("tool")){
-        html.classList.add("no-cursor");
-        if(event.target == tools[0]){
-            html.classList.add("big-pointer");
-        }
-    }
-    console.log(event.target);
+//         if(event.pageX == null && event.clientX != null){
+//             eventDoc = (event.target && event.target.ownerDocument) || document;
+//             doc = eventDoc.documentElement;
+//             body = eventDoc.body;
+
+//             event.pageX = event.clientX +
+//             (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+//             event.pageY = event.clientY +
+//             (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
+//         }
+//         document.getElementsByClassName("current-cursor")[0].style.top = event.pageY - 10 + "px";
+//         document.getElementsByClassName("current-cursor")[0].style.left = event.pageX - 25 + "px";
+//         // pointerVerticalLeft.style.top = event.pageY - 15 + "px";
+//         // pointerVerticalRight.style.top = event.pageY - 15 + "px";
+//         // pointerHorizontalTop.style.left = event.pageX - 15 + "px";
+//         // pointerHorizontalBottom.style.left = event.pageX - 15 + "px";
+//     }
+//     console.log();
+// }
+function customCursor(){
+    html.classList.add("custom-cursor-big-hand-pointer");
 }
 //Event Listeners
 window.addEventListener("load", insertJar);
@@ -217,7 +237,4 @@ window.addEventListener("load", addDragLocation);
 colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
-//For Current Mouse Position
-if (document.attachEvent) { document.attachEvent('onclick', currentMousePosition); }
-else { document.addEventListener('click', currentMousePosition); };
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
