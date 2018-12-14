@@ -148,7 +148,7 @@ main{
     height: 100px;
 }
 .custom-cursor-big-hand-pointer{
-    cursor: url("Large-Hand-Pointer-Resized.png") 33 5, auto;
+    cursor: url("Large-Hand-Pointer-Resized.png") 20 4, auto;
 }
 .drag-location{
     margin: 0;
