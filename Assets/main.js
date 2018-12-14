@@ -100,6 +100,7 @@ const colorModalButton = document.getElementById("add-pill-button");
 const colorModalClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
 const tools = document.getElementsByClassName("tool");
+const pills = document.getElementsByClassName("pill");
 const bigHandPointerPng = document.getElementById("big-hand-pointer-png");
 const rootCSS = window.getComputedStyle(document.documentElement);
 const html = document.getElementsByClassName("html")[0];
@@ -130,8 +131,13 @@ for(let i = 0; i < dropClickLocations.length; i++){
     dropClickLocations[i].setAttribute("ondragover", "allowDrop(event)");
     dropClickLocations[i].setAttribute("ondrop", "drop(event)");
 }
+//Set Attributes for all Tools
 for(let i = 0; i < tools.length; i++){
     tools[i].setAttribute("onclick", "customCursor()");
+}
+//Set Attributes for all Pills
+for(let i = 0; i < pills.length; i++){
+    pills[i].setAttribute("onclick", "replaceCursor(event)");
 }
 //bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
@@ -191,43 +197,42 @@ function resetDragLocations(){
         dragLocations[i].removeAttribute("style");
     }
 }
-// function replaceCursor(e){
-//         const bigHandPointerImg = document.createElement("img");
-//         bigHandPointerImg.classList.add("big-hand-pointer-img");
-//         bigHandPointerImg.setAttribute("src", "Assets/Large-Hand-Pointer.png");
-//     if(e.target == bigHandPointerPng){
-//         //Adds Custom Cursor to HTML
-//         html.appendChild(bigHandPointerImg);
-//         //Disables Default Cursor
-//         html.classList.add("no-cursor");
-//         //Add Class to Custom Cursor
-//         bigHandPointerImg.classList.add("current-cursor");
-//         document.onmousemove = trackCursorPos;
-//     }
-//     function trackCursorPos(event) {
-//         var eventDoc, doc, body, pageX, pageY;
+function replaceCursor(e){
+        const pill = e.target.cloneNode(true);
+    if(e.target.classList.contains("pill")){
+        pill.setAttribute("position", "absolute");
+        //Adds Custom Cursor to HTML
+        html.appendChild(pill);
+        //Disables Default Cursor
+        html.classList.add("no-cursor");
+        //Add Class to Custom Cursor
+        pill.classList.add("current-cursor");
+        document.onmousemove = trackCursorPos;
+    }
+    function trackCursorPos(event) {
+        var eventDoc, doc, body, pageX, pageY;
 
-//         event = event || window.event; //For IE
+        event = event || window.event; //For IE
 
-//         if(event.pageX == null && event.clientX != null){
-//             eventDoc = (event.target && event.target.ownerDocument) || document;
-//             doc = eventDoc.documentElement;
-//             body = eventDoc.body;
+        if(event.pageX == null && event.clientX != null){
+            eventDoc = (event.target && event.target.ownerDocument) || document;
+            doc = eventDoc.documentElement;
+            body = eventDoc.body;
 
-//             event.pageX = event.clientX +
-//             (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
-//             event.pageY = event.clientY +
-//             (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
-//         }
-//         document.getElementsByClassName("current-cursor")[0].style.top = event.pageY - 10 + "px";
-//         document.getElementsByClassName("current-cursor")[0].style.left = event.pageX - 25 + "px";
-//         // pointerVerticalLeft.style.top = event.pageY - 15 + "px";
-//         // pointerVerticalRight.style.top = event.pageY - 15 + "px";
-//         // pointerHorizontalTop.style.left = event.pageX - 15 + "px";
-//         // pointerHorizontalBottom.style.left = event.pageX - 15 + "px";
-//     }
-//     console.log();
-// }
+            event.pageX = event.clientX +
+            (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+            event.pageY = event.clientY +
+            (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
+        }
+        document.getElementsByClassName("current-cursor")[0].style.top = event.pageY - 10 + "px";
+        document.getElementsByClassName("current-cursor")[0].style.left = event.pageX - 25 + "px";
+        // pointerVerticalLeft.style.top = event.pageY - 15 + "px";
+        // pointerVerticalRight.style.top = event.pageY - 15 + "px";
+        // pointerHorizontalTop.style.left = event.pageX - 15 + "px";
+        // pointerHorizontalBottom.style.left = event.pageX - 15 + "px";
+    }
+    console.log("I am running");
+}
 function customCursor(){
     html.classList.add("custom-cursor-big-hand-pointer");
 }

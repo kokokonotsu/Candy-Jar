@@ -13,15 +13,13 @@
     font-style: normal;
 }
 html{
+    position: relative;
     width: 100%;
     height: 100%;
     margin: 0;
 }
 .no-cursor{
     cursor: none;
-}
-.big-pointer{
-    cursor: url(Large-Hand-Pointer.png), auto;
 }
 body{
     position: relative;
@@ -132,8 +130,8 @@ main{
     margin: 0;
 }
 #big-hand-pointer-button{
-    width: 5vw;
-    height: 10vh;
+    width: 64px;
+    height: 83px;
     border: 1px solid var(--mainColor);
 }
 #big-hand-pointer-png{
