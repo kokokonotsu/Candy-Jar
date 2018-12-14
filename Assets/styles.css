@@ -104,20 +104,14 @@ header .page-title{
 main{
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .main-content-container{
     display: inline-grid;
-    grid-template:
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    ". . . . . . . . . . . . . . . ." auto
-    / 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw 2vw;
+    grid-template-rows: repeat(8, auto);
+    grid-template-columns: repeat(8, 2vw);
     height: 100%;
 }
 .tool-box{
