@@ -152,10 +152,15 @@ main{
 }
 #paint-brush-cursor-button{
     border: 1px outset var(--toolBarBorderColor);
+    width: 64px;
+    height: 83px;
     padding: 10px;
 }
 #big-hand-pointer-png{
     width:100%;
+}
+#paint-brush-cursor-png{
+    height: 83px;
 }
 .big-hand-pointer-img{
     position: absolute;
@@ -164,11 +169,14 @@ main{
     width: 100px;
     height: 100px;
 }
+.paint-brush-img{
+
+}
 .custom-cursor-big-hand-pointer{
     cursor: url("Large-Hand-Pointer-Resized.png") 20 1, auto;
 }
 .custom-cursor-paint-brush{
-    cursor: url("Paint-Brush-Cursor-Resized.png") 1 1, auto;
+    cursor: url("Paint-Brush-Cursor-BW-Resized.png") 0 0, auto;
 }
 .drag-location{
     margin: 0;
