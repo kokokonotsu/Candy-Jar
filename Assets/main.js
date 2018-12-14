@@ -135,10 +135,6 @@ for(let i = 0; i < dropClickLocations.length; i++){
 for(let i = 0; i < tools.length; i++){
     tools[i].setAttribute("onclick", "customCursor()");
 }
-//Set Attributes for all Pills
-for(let i = 0; i < pills.length; i++){
-    pills[i].setAttribute("onclick", "replaceCursor(event)");
-}
 //bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
 function insertJar(){
@@ -235,9 +231,18 @@ function replaceCursor(e){
 function customCursor(){
     html.classList.add("custom-cursor-big-hand-pointer");
 }
+//Insert Pills
+function insertPills(){
+    const pill = document.createElement("img");
+    pill.setAttribute("src", "Assets/Blue-Pill.png");
+    for(let i = 0; i < pills.length; i++){
+        pills[i].appendChild(pill);
+    }
+}
 //Event Listeners
 window.addEventListener("load", insertJar);
 window.addEventListener("load", addDragLocation);
+window.addEventListener("load", insertPills);
 colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
