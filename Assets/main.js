@@ -115,6 +115,7 @@ for(let i = 0; i < dragLocations.length; i++){
     dragLocations[i].setAttribute("ondrop", "dropColor(event)");
     dragLocations[i].setAttribute("ondragenter", "dragEnter(event)");
     dragLocations[i].setAttribute("ondragleave", "dragLeave(event)");
+    dragLocations[i].setAttribute("onclick", "paint(event)");
 }
 //Set Attributes for all Jar-Draggables
 for(let i = 0; i < jarDraggables.length; i++){
@@ -231,6 +232,7 @@ function replaceCursor(e){
     }
     console.log("I am running");
 }
+//Custom Cursor Call
 function customCursor(event){
     if(event.target.id == "big-hand-pointer-png"){ html.classList.add("custom-cursor-big-hand-pointer"); }
     else if(event.target.id != "big-hand-pointer-png"){ html.classList.remove("custom-cursor-big-hand-pointer"); }
@@ -243,6 +245,15 @@ function insertPills(){
     pill.setAttribute("src", "Assets/Blue-Pill-Resized-320p.png");
     for(let i = 0; i < pills.length; i++){
         pills[i].appendChild(pill.cloneNode(true));
+    }
+}
+//Paint Brush Painting
+function paint(event){
+    if(html.classList.contains("custom-cursor-paint-brush")){
+        event.target.style.backgroundColor = "black";
+        event.target.style.borderColor = "#18CAE6";
+    } else {
+        console.log("I am trying to paint");
     }
 }
 //Event Listeners
