@@ -94,12 +94,9 @@ header .page-title{
     cursor: pointer;
 }
 .pill{
-    border-radius: 50%;
     height: 50px;
     width: 50px;
-    background: radial-gradient(#18CAE6, black);
-}
-.pill{
+    background-image: url("Blue-Pill.png");
     position: absolute;
     top: 50%;
     left: 50%;
