@@ -180,6 +180,8 @@ main{
     fill: white;
 }
 .jar-ul{
+    /* display: inline-flex;
+    flex-direction: column; */
     position: absolute;
     left: 0;
     bottom: 0;
@@ -190,13 +192,13 @@ main{
     list-style-type: none;
 }
 .jar-li{
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
     height: auto;
     border: none;
+    margin: 0;
 }
 @keyframes fade-in{
     from{
@@ -207,4 +209,9 @@ main{
         top: 0;
         opacity: 1;
     }
+}
+footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
