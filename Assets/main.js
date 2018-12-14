@@ -182,8 +182,11 @@ function dragLeave(event){
 }
 function addDragLocation(){
     const dragLocationElement = document.getElementsByClassName("drag-location")[0];
-    const mainElement = document.getElementsByClassName("main-content-container")[0]; 
-    for(let i = 0; i < 255; i++){
+    const mainElement = document.getElementsByClassName("main-content-container")[0];
+    const gridHeight = 8;
+    const gridWidth = 8;
+    const gridTotal = (gridHeight * gridWidth) - 1;
+    for(let i = 0; i < gridTotal; i++){
         mainElement.appendChild(dragLocationElement.cloneNode(true));
     }
 }
