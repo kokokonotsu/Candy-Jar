@@ -137,12 +137,13 @@ main{
 }
 #big-hand-pointer-button{
     width: 64px;
-    height: 83px;
+    height: 100%;
     border: 1px solid var(--mainColor);
 }
 #big-hand-pointer-png{
     height: 100%;
     width:100%;
+    border: 1px solid var(--mainColor);
 }
 .big-hand-pointer-img{
     position: absolute;
@@ -153,6 +154,9 @@ main{
 }
 .custom-cursor-big-hand-pointer{
     cursor: url("Large-Hand-Pointer-Resized.png") 20 1, auto;
+}
+.custom-cursor-paint-brush{
+    cursor: url("Paint-Brush-Cursor-Resized.png") 1 1, auto;
 }
 .drag-location{
     margin: 0;
