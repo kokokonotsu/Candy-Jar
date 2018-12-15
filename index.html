@@ -16,16 +16,23 @@
     </header>
     <main>
         <div class="main-content-container">
-            <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
-                <!-- <div class="drag-block draggable" id="drag-block" draggable="true"></div> -->
-            </div>
+            <table class="coloring-table">
+                <tr class="coloring-table-row">
+                    <td class="color-table-cell">
+                        <div class="drag-location" ondragover="allowDrop(event)" ondrop="drop(event)">
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <button id="reset-button">
-            Reset Grid
-        </button>
-        <button class="color-modal-button" id="color-modal-reveal-button">
-            Get Color Modal
-        </button>
+        <div class="main-button-container">
+            <button id="reset-button">
+                Reset Grid
+            </button>
+            <button class="color-modal-button" id="color-modal-reveal-button">
+                Get Color Modal
+            </button>
+        </div>
         <div class="modal-container">
             <div class="modal-content" id="color-modal-content">
                 <div class="modal-header">
