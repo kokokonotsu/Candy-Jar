@@ -19,24 +19,26 @@
             <table class="coloring-table">
             </table>
         </div>
-        <div class="main-button-container">
-            <button id="reset-button">
-                Reset Grid
-            </button>
-            <button class="color-modal-button" id="color-modal-reveal-button">
-                Get Color Modal
-            </button>
-        </div>
-        <div class="modal-container">
-            <div class="modal-content" id="color-modal-content">
-                <div class="modal-header">
-                    <span class="material-icons" id="color-modal-close">close</span>
-                    <h1 class="modal-h1">Pick A Color</h1>
+        <div class="aside-container">
+            <div class="modal-container">
+                <div class="modal-content" id="color-modal-content">
+                    <div class="modal-header">
+                        <span class="material-icons" id="color-modal-close">close</span>
+                        <h1 class="modal-h1">Pick A Color</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="POST">
+                            <input type="submit" id="color-modal-submit">
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form action="" method="POST">
-                        <input type="submit" id="color-modal-submit">
-                    </form>
+                <div class="main-button-container">
+                    <button id="reset-button">
+                        Reset Grid
+                    </button>
+                    <button class="color-modal-button" id="color-modal-reveal-button">
+                        Get Color Modal
+                    </button>
                 </div>
             </div>
         </div>
