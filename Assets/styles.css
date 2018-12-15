@@ -129,8 +129,8 @@ main{
     bottom: 0;
     width: 100%;
     background-color: var(--toolBarColor);
-    border-top: 2px solid var(--toolBarBorderColor);
-    border-bottom: 2px solid var(--toolBarBorderColor); 
+    border-top: 2px outset var(--toolBarBorderColor);
+    border-bottom: 2px outset var(--toolBarBorderColor); 
 }
 .tool-list{
     display: flex;
@@ -166,8 +166,8 @@ main{
     height: 83px;
     padding: 10px;
 }
-.tool-div .custom-cursor-img:active{
-    border-style: inset;
+.tool .custom-cursor-img:active{
+    border: 1px inset var(--toolBarBorderColor);
 }
 .custom-cursor-img{
     height: 83px;
