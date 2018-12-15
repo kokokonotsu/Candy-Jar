@@ -54,7 +54,7 @@ function drop(event){
     var dropElement = event.dataTransfer.getData("element");
     if(event.target.className == "drag-location"){event.target.appendChild(document.getElementById(dropElement));}
     else if(event.target.className == "reset-button"){ resetDragLocations(); }
-    else if(event.target.classList.contains("drop-click")){ event.target.click(); console.log("I am running"); };
+    else if(event.target.classList.contains("drop-click")){ event.target.click(); /* Debug */ /*console.log("I am running"); */ };
 }
 function dragColor(event){
     event.dataTransfer.setData("colorOne", "black");
@@ -70,7 +70,7 @@ function dropColor(event){
         event.target.style.borderStyle = "solid";
     }
     else if(event.target.className == "reset-button"){ resetDragLocations(); }
-    else if(event.target.classList.contains("drop-click")){ event.target.click(); console.log("I am running"); };
+    else if(event.target.classList.contains("drop-click")){ event.target.click(); /*Debug */ /*console.log("I am running");*/ };
 }
 function dragEnter(event){
     if(event.target.classList.contains("drag-location")){
@@ -126,12 +126,9 @@ function replaceCursor(e){
         }
         document.getElementsByClassName("current-cursor")[0].style.top = event.pageY - 10 + "px";
         document.getElementsByClassName("current-cursor")[0].style.left = event.pageX - 25 + "px";
-        // pointerVerticalLeft.style.top = event.pageY - 15 + "px";
-        // pointerVerticalRight.style.top = event.pageY - 15 + "px";
-        // pointerHorizontalTop.style.left = event.pageX - 15 + "px";
-        // pointerHorizontalBottom.style.left = event.pageX - 15 + "px";
     }
-    console.log("I am running");
+    //Debug
+    //console.log("I am running");
 }
 //Custom Cursor Call
 function customCursor(event){
@@ -152,7 +149,7 @@ function paint(event){
         event.target.style.borderColor = "#18CAE6";
     } else {
         //Debug
-        console.log("I am trying to paint");
+        //console.log("I am trying to paint");
     }
 }
 //Add Hover for Big Hand to all Buttons
