@@ -163,41 +163,47 @@ function buttonHover(event){
     if(event.target.id == "big-hand-pointer-png" || event.target.id == "big-hand-pointer-button" || event.target.id == "big-hand-pointer-li"){
         currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Large-Hand-Pointer-Resized.png") 20 1, auto; }`;
-        if(currentStyle.style.cssText){
-            currentStyle.style.cssText = hoverCSS;
+        if(currentStyle.childNodes[0]){
+            currentStyle.childNodes[0] = currentStyle.replaceChild(document.createTextNode(hoverCSS), currentStyle.childNodes[0]);
             //Debug
-            console.log("I am supposed to be running");
+            // console.log("I am supposed to be running");
         } else {
             currentStyle.appendChild(document.createTextNode(hoverCSS));
             //Debug
-            console.log("I'm not supposed to be running");
+            // console.log("I'm not supposed to be running");
         }
-    } else
-    if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){
+        //Debug
+        // console.log(currentStyle.childNodes[0]);
+    } 
+    else if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){
         currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Paint-Brush-Cursor-BW-With-Outline-Resized.png") 0 0, auto; }`;
-        if(currentStyle.style.cssText){
-            currentStyle.style.cssText = hoverCSS;
+        if(currentStyle.childNodes[0]){
+            currentStyle.childNodes[0] = currentStyle.replaceChild(document.createTextNode(hoverCSS), currentStyle.childNodes[0]);
             //Debug
-            console.log("I am supposed to be running");
+            // console.log("I am supposed to be running");
         } else {
             currentStyle.appendChild(document.createTextNode(hoverCSS));
             //Debug
-            console.log("I'm not supposed to be running");
+            // console.log("I'm not supposed to be running");
         }
-    } else
-    if(event.target.id == "large-cursor-png" || event.target.id == "large-cursor-button" || event.target.id == "large-cursor-li"){
+        //Debug
+        // console.log(currentStyle.childNodes[0]);
+    } 
+    else if(event.target.id == "large-cursor-png" || event.target.id == "large-cursor-button" || event.target.id == "large-cursor-li"){
         currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Large-Pointer.png") 0 0, auto; }`;
-        if(currentStyle.style.cssText){
-            currentStyle.style.cssText = hoverCSS;
+        if(currentStyle.childNodes[0]){
+            currentStyle.childNodes[0] = currentStyle.replaceChild(document.createTextNode(hoverCSS), currentStyle.childNodes[0]);
             //Debug
-            console.log("I am supposed to be running");
+            // console.log("I am supposed to be running");
         } else {
             currentStyle.appendChild(document.createTextNode(hoverCSS));
             //Debug
-            console.log("I'm not supposed to be running");
+            // console.log("I'm not supposed to be running");
         }
+        //Debug
+        // console.log(currentStyle.childNodes[0]);
     }
 }
 //Event Listeners
