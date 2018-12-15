@@ -11,9 +11,9 @@ const dragBlock = document.getElementById("drag-block");
 const draggables = document.getElementsByClassName("draggable");
 const dragLocations = document.getElementsByClassName("drag-location");
 const allButtons = document.getElementsByTagName("button");
-const colorModal = document.getElementById("color-modal");
-const colorModalButton = document.getElementById("color-modal-reveal-button");
-const colorModalClose = document.getElementById("color-modal-close");
+const colorModalContent = document.getElementById("color-modal-content");
+const colorModalContentButton = document.getElementById("color-modal-reveal-button");
+const colorModalContentClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
 const tools = document.getElementsByClassName("tool");
 const pills = document.getElementsByClassName("pill");
@@ -213,9 +213,8 @@ function buttonUnsetActive() {
 }
 //Event Listeners
 window.addEventListener("load", addDragLocation);
-colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
-colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
-window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
+colorModalContentButton.addEventListener("click", () => {colorModalContent.style.display = "block";});
+colorModalContentClose.addEventListener("click", () => {colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mousedown", buttonSetActive); };
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mouseup", buttonUnsetActive); };
