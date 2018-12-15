@@ -38,7 +38,7 @@ for(let i = 0; i < dropClickLocations.length; i++){
 }
 //Set Attributes for all Tools
 for(let i = 0; i < tools.length; i++){
-    tools[i].setAttribute("onclick", "customCursor(event)");
+    tools[i].setAttribute("onclick", "customCursor(event); buttonHover(event)");
 }
 //bigHandPointerButton.insertAdjacentHTML("afterbegin", bigHandPointer);
 //Functions
@@ -150,36 +150,53 @@ function paint(event){
         event.target.style.backgroundColor = "black";
         event.target.style.borderColor = "#18CAE6";
     } else {
+        //Debug
         console.log("I am trying to paint");
     }
 }
 //Add Hover for Big Hand to all Buttons
-function buttonHover(){
-    const allButtons = document.getElementsByTagName("button");
-    var hoverCSS;
+function buttonHover(event){
     const hoverStyle = document.createElement("style");
-    if(document.getElementsByTagName("style").length == 0){html.appendChild(hoverStyle);};
-    console.log(document.getElementsByTagName("style"));
-    if(html.classList.contains("custom-cursor-big-hand-pointer")){
+    var hoverCSS;
+    var currentStyle;
+    if(!document.getElementsByTagName("style")[0]){ html.appendChild(hoverStyle); };
+    if(event.target.id == "big-hand-pointer-png" || event.target.id == "big-hand-pointer-button" || event.target.id == "big-hand-pointer-li"){
+        currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Large-Hand-Pointer-Resized.png") 20 1, auto; }`;
-        if(hoverStyle.style.cssText){
-            hoverStyle.style.cssText = hoverCSS;
+        if(currentStyle.style.cssText){
+            currentStyle.style.cssText = hoverCSS;
+            //Debug
+            console.log("I am supposed to be running");
         } else {
-            hoverStyle.appendChild(document.createTextNode(hoverCSS));
+            currentStyle.appendChild(document.createTextNode(hoverCSS));
+            //Debug
+            console.log("I'm not supposed to be running");
         }
-    } else if(html.classList.contains("custom-cursor-paint-brush")){
+    } else
+    if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){
+        currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Paint-Brush-Cursor-BW-With-Outline-Resized.png") 0 0, auto; }`;
-        if(hoverStyle.style.cssText){
-            hoverStyle.style.cssText = hoverCSS;
+        if(currentStyle.style.cssText){
+            currentStyle.style.cssText = hoverCSS;
+            //Debug
+            console.log("I am supposed to be running");
         } else {
-            hoverStyle.appendChild(document.createTextNode(hoverCSS));
+            currentStyle.appendChild(document.createTextNode(hoverCSS));
+            //Debug
+            console.log("I'm not supposed to be running");
         }
-    } else if(html.classList.contains("custom-cursor-large-pointer")){
+    } else
+    if(event.target.id == "large-cursor-png" || event.target.id == "large-cursor-button" || event.target.id == "large-cursor-li"){
+        currentStyle = document.getElementsByTagName("style")[0];
         hoverCSS = `button:hover{ cursor: url("Assets/Large-Pointer.png") 0 0, auto; }`;
-        if(hoverStyle.style.cssText){
-            hoverStyle.style.cssText = hoverCSS;
+        if(currentStyle.style.cssText){
+            currentStyle.style.cssText = hoverCSS;
+            //Debug
+            console.log("I am supposed to be running");
         } else {
-            hoverStyle.appendChild(document.createTextNode(hoverCSS));
+            currentStyle.appendChild(document.createTextNode(hoverCSS));
+            //Debug
+            console.log("I'm not supposed to be running");
         }
     }
 }
@@ -189,5 +206,4 @@ colorModalButton.addEventListener("click", () => {colorModal.style.display = "bl
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
-for(let i = 0; i < tools.length; i++){ tools[i].addEventListener("click", buttonHover); };
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
