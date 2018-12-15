@@ -74,7 +74,7 @@ main{
     overflow: hidden;
     width: 100%;
 }
-main button{
+.main-button-container button{
     display: inline;
     background: var(--buttonColor);
     border: 2px outset var(--buttonBorderColor);
