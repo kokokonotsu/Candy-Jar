@@ -134,13 +134,16 @@ function replaceCursor(e){
 }
 //Custom Cursor Call
 function customCursor(event){
-    if(event.target.id == "big-hand-pointer-png"){ html.classList.add("custom-cursor-big-hand-pointer"); }
-    else if(event.target.id != "big-hand-pointer-png"){ html.classList.remove("custom-cursor-big-hand-pointer"); }
-    if(event.target.id == "paint-brush-cursor-png"){ html.classList.add("custom-cursor-paint-brush"); }
-    else if(event.target.id != "paint-brush-cursor-png"){ html.classList.remove("custom-cursor-paint-brush"); }
+    if(event.target.id == "big-hand-pointer-png" || event.target.id == "big-hand-pointer-button" || event.target.id == "big-hand-pointer-li"){ html.classList.add("custom-cursor-big-hand-pointer"); }
+    else if(event.target.id != "big-hand-pointer-png" || event.target.id != "big-hand-point-button"|| event.target.id != "big-hand-pointer-li"){ html.classList.remove("custom-cursor-big-hand-pointer"); }
+    if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){ html.classList.add("custom-cursor-paint-brush"); }
+    else if(event.target.id != "paint-brush-cursor-png" || event.target.id != "paint-brush-cursor-button" || event.target.id != "paint-brush-li"){ html.classList.remove("custom-cursor-paint-brush"); }
+    if(event.target.id == "large-cursor-png" || event.target.id == "large-cursor-button" || event.target.id == "large-cursor-li"){
+        html.classList.add("custom-cursor-large-cursor");
+    } else if (event.target.id != "large-cursor-png" || event.target.id != "large-cursor-button" || event.target.id != "large-cursor-li"){
+        html.classList.remove("custom-cursor-large-cursor");
+    }
 }
-//Insert Pills
-
 //Paint Brush Painting
 function paint(event){
     if(html.classList.contains("custom-cursor-paint-brush")){
@@ -150,10 +153,25 @@ function paint(event){
         console.log("I am trying to paint");
     }
 }
+//Add Hover for Big Hand to all Buttons
+function buttonHover(){
+    const allButtons = document.getElementsByTagName("button");
+    const bigHandPointerCSS = `button:hover{ cursor: url("Assets/Large-Hand-Pointer-Resized.png") 20 1, auto; }`;
+    const hoverStyle = document.createElement("style");
+    if(html.classList.contains("custom-cursor-big-hand-pointer")){
+        if(hoverStyle.style.cssText){
+            hoverStyle.style.cssText = bigHandPointerCSS;
+        } else {
+            hoverStyle.appendChild(document.createTextNode(bigHandPointerCSS));
+        }
+        html.appendChild(hoverStyle);
+    }
+}
 //Event Listeners
 window.addEventListener("load", addDragLocation);
 colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
+window.addEventListener("load", buttonHover);
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
