@@ -84,13 +84,25 @@ function dragLeave(event){
     }
 }
 function addDragLocation(){
-    const dragLocationElement = document.getElementsByClassName("drag-location")[0];
-    const mainElement = document.getElementsByClassName("main-content-container")[0];
-    const gridHeight = 8;
-    const gridWidth = 8;
-    const gridTotal = (gridHeight * gridWidth) - 1;
-    for(let i = 0; i < gridTotal; i++){
-        mainElement.appendChild(dragLocationElement.cloneNode(true));
+    const table = document.getElementsByClassName("coloring-table")[0];
+    const presetTableCell = document.getElementsByClassName("table-cell")[0];
+    const tableColNum = 8;
+    const tableRowNum = 8;
+    const tableBody = document.createElement("tbody");
+    table.appendChild(tableBody);
+    for(let i = 0; i <= tableRowNum; i++){
+        var tableRow = document.createElement("tr");
+        table.appendChild(tableRow);
+        for(let j = 0; j <= tableColNum; j++){
+            var cellData = document.createElement("div");
+            cellData.setAttribute("class", "drag-location");
+            cellData.setAttribute("ondragover", "allowDrop(event)");
+            cellData.setAttribute("ondrop", "drop(event); dropColor(event)");
+            cellData.setAttribute("ondragenter", "dragEnter(event)");
+            cellData.setAttribute("ondragleave", "dragLeave(event)");
+            cellData.setAttribute("onclick", "paint(event)");
+            tableRow.appendChild(cellData);
+        }
     }
 }
 //Removes all DOM-styling on Drag-Locations
