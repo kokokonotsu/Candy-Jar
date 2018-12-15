@@ -145,21 +145,6 @@ main{
     margin: 0;
     padding: 10px;
 }
-/* #big-hand-pointer-button{
-    width: 64px;
-    padding: 10px;
-    border: 1px outset var(--toolBarBorderColor);
-}
-#paint-brush-cursor-button{
-    border: 1px outset var(--toolBarBorderColor);
-    width: 64px;
-    height: 83px;
-    padding: 10px;
-}
-#large-pointer-button{
-    border: 1px outset var(--toolBarBorderColor);
-
-} */
 .custom-cursor-button{
     border: 1px outset var(--toolBarBorderColor);
     width: 64px;
