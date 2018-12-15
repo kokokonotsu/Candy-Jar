@@ -23,11 +23,14 @@
         <button id="reset-button">
             Reset Grid
         </button>
-        <div class="modal" id="color-modal">
-            <div class="modal-content">
+        <button class="color-modal-button" id="color-modal-reveal-button">
+            Get Color Modal
+        </button>
+        <div class="modal-container">
+            <div class="modal-content" id="color-modal-content">
                 <div class="modal-header">
                     <span class="material-icons" id="color-modal-close">close</span>
-                    <h1 class="modal-h1">Create a Color Pill</h1>
+                    <h1 class="modal-h1">Pick A Color</h1>
                 </div>
                 <div class="modal-body">
                     <form action="" method="POST">
@@ -36,9 +39,6 @@
                 </div>
             </div>
         </div>
-        <button class="color-modal-button" id="color-modal-reveal-button">
-            Get Color Modal
-        </button>
     </main>
     <footer>
         <button class="drop-click" id="add-pill-button">
