@@ -166,10 +166,10 @@ function paint(event){
         event.target.style.backgroundColor = currentPaintColor;
         event.target.style.borderColor = "#18CAE6";
         //Debug
-        console.log("I am trying to paint");
+        console.log("I can paint with this");
     } else {
         //Debug
-        console.log("I am trying to paint");
+        console.log("I cannot paint with this");
     }
 }
 //Add Hover for Big Hand to all Buttons
