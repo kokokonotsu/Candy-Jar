@@ -155,6 +155,16 @@ main button{
     width: 80px;
     height: 40px;
 }
+.modal-body{
+    width: 100%;
+}
+#color-modal-table{
+    width: 100%;
+}
+.color-input{
+    height: 100%;
+    width: 100%;
+}
 .tool-box{
     display: inline-flex;
     position: fixed;

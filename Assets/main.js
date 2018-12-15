@@ -15,6 +15,7 @@ const colorModalContent = document.getElementById("color-modal-content");
 const colorModalContentButton = document.getElementById("color-modal-reveal-button");
 const colorModalContentClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
+var currentPaintColor = "";
 const tools = document.getElementsByClassName("tool");
 const pills = document.getElementsByClassName("pill");
 const bigHandPointerPng = document.getElementById("big-hand-pointer-png");
@@ -157,12 +158,18 @@ function customCursor(event){
 }
 //Paint Brush Painting
 function paint(event){
+    if(event.target.classList.contains("color-input")){
+        currentPaintColor = event.target.value;
+        console.log(currentPaintColor);
+    }
     if(html.classList.contains("custom-cursor-paint-brush")){
-        event.target.style.backgroundColor = "black";
+        event.target.style.backgroundColor = currentPaintColor;
         event.target.style.borderColor = "#18CAE6";
+        //Debug
+        console.log("I am trying to paint");
     } else {
         //Debug
-        //console.log("I am trying to paint");
+        console.log("I am trying to paint");
     }
 }
 //Add Hover for Big Hand to all Buttons
@@ -223,11 +230,45 @@ function buttonSetActive() {
 function buttonUnsetActive() {
     if(this.classList.contains("button-active")){ this.classList.remove("button-active");};
 }
+//Change Active Color
+function changeColor(e){
+    e = event.target.value;
+    currentPaintColor = e;
+}
+//Add Color-Modal Color Inputs
+function addColorModalColors(){
+    const colorModalBody = document.getElementById("color-modal-body");
+    const tableBody = document.getElementById("color-modal-table-body");
+    const tableRowsNum = 13;
+    const tableColNum = 12;
+    var inputCount = 0;
+    for(let i = 0; i < tableRowsNum; i++){
+        var tableRow = document.createElement("tr");
+        tableBody.appendChild(tableRow);
+        for(let j = 0; j < tableColNum; j++){
+            if(inputCount >= 147){
+                break;
+            }
+            var cell = document.createElement("td");
+            var cellData = document.createElement("button");
+            cellData.setAttribute("class", "color-input");
+            cellData.setAttribute("value", allCSSColorNames[inputCount]);
+            cellData.setAttribute("onclick", "paint(event)");
+            cellData.title = allCSSColorNames[inputCount];
+            cellData.style.backgroundColor = allCSSColorNames[inputCount];
+            cell.appendChild(cellData);
+            tableRow.appendChild(cell);
+            inputCount++;
+        }
+    }
+}
 //Event Listeners
 window.addEventListener("load", addDragLocation);
 colorModalContentButton.addEventListener("click", () => { if (colorModalContent.style.display == "none"){ colorModalContent.style.display = "block"; } else if (colorModalContent.style.display != "none"){ colorModalContent.style.display = "none" }; });
 colorModalContentClose.addEventListener("click", () => { colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
+window.addEventListener("load", addColorModalColors);
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mousedown", buttonSetActive); };
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mouseup", buttonUnsetActive); };
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
+console.log(allCSSColorNames.length);
