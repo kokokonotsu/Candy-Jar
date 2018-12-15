@@ -10,21 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<div class="modal" id="color-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="material-icons" id="color-modal-close">close</span>
-            <h1 class="modal-h1">Create a Color Pill</h1>
-        </div>
-        <div class="modal-body">
-            <form action="" method="POST">
-                <input type="color" id="color-one-picker">
-                <input type="color" id="color-two-picker">
-                <input type="submit" id="color-modal-submit">
-            </form>
-        </div>
-    </div>
-</div>
 <body>
     <header>
         <h1 class="page-title">Ethan's Puzzle Website</h1>
@@ -37,6 +22,22 @@
         </div>
         <button id="reset-button">
             Reset Grid
+        </button>
+        <div class="modal" id="color-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="material-icons" id="color-modal-close">close</span>
+                    <h1 class="modal-h1">Create a Color Pill</h1>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <input type="submit" id="color-modal-submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button id="color-modal-reveal-button">
+            Get Color Modal
         </button>
     </main>
     <footer>
