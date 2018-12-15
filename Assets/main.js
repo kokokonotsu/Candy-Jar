@@ -86,8 +86,8 @@ function dragLeave(event){
 function addDragLocation(){
     const table = document.getElementsByClassName("coloring-table")[0];
     const presetTableCell = document.getElementsByClassName("table-cell")[0];
-    const tableColNum = 8;
-    const tableRowNum = 8;
+    const tableColNum = 9;
+    const tableRowNum = 9;
     const tableBody = document.createElement("tbody");
     table.appendChild(tableBody);
     for(let i = 0; i <= tableRowNum; i++){
