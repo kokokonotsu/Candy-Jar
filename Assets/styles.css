@@ -145,7 +145,7 @@ main{
     margin: 0;
     padding: 10px;
 }
-#big-hand-pointer-button{
+/* #big-hand-pointer-button{
     width: 64px;
     padding: 10px;
     border: 1px outset var(--toolBarBorderColor);
@@ -156,11 +156,22 @@ main{
     height: 83px;
     padding: 10px;
 }
-#big-hand-pointer-png{
-    width:100%;
-}
-#paint-brush-cursor-png{
+#large-pointer-button{
+    border: 1px outset var(--toolBarBorderColor);
+
+} */
+.custom-cursor-button{
+    border: 1px outset var(--toolBarBorderColor);
+    width: 64px;
     height: 83px;
+    padding: 10px;
+}
+.tool-div .custom-cursor-img:active{
+    border-style: inset;
+}
+.custom-cursor-img{
+    height: 83px;
+    width: 64px;
 }
 .big-hand-pointer-img{
     position: absolute;
@@ -169,14 +180,14 @@ main{
     width: 100px;
     height: 100px;
 }
-.paint-brush-img{
-
-}
 .custom-cursor-big-hand-pointer{
     cursor: url("Large-Hand-Pointer-Resized.png") 20 1, auto;
 }
 .custom-cursor-paint-brush{
-    cursor: url("Paint-Brush-Cursor-BW-Resized.png") 0 0, auto;
+    cursor: url("Paint-Brush-Cursor-BW-With-Outline-Resized.png") 0 0, auto;
+}
+.custom-cursor-large-cursor{
+    cursor: url("Large-Pointer.png") 0 0, auto;
 }
 .drag-location{
     margin: 0;
