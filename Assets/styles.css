@@ -82,11 +82,6 @@ main{
     font-family: "Major Mono Display", monospace;
     color: var(--fontColor);
 }
-.main-button-container{
-    display: inline;
-    justify-self: flex-end;
-    align-self: flex-end;
-}
 .main-content-container{
     display: inline-block;
 }
