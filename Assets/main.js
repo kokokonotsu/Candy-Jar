@@ -16,11 +16,15 @@ const colorModalContentButton = document.getElementById("color-modal-reveal-butt
 const colorModalContentClose = document.getElementById("color-modal-close");
 const dropClickLocations = document.getElementsByClassName("drop-click");
 var currentPaintColor = "";
+const customCursorPaintBrush = "custom-cursor-paint-brush";
 const tools = document.getElementsByClassName("tool");
 const pills = document.getElementsByClassName("pill");
 const bigHandPointerPng = document.getElementById("big-hand-pointer-png");
 const rootCSS = window.getComputedStyle(document.documentElement);
 const html = document.getElementsByClassName("html")[0];
+//Paint Bubble Init
+    const paintBubble = document.createElement("div");
+    paintBubble.className = "paint-bubble";
 //Set Attributes for all Non-Jar-Draggables
 for(let i = 0; i < draggables.length; i++){
     draggables[i].setAttribute("ondragstart", "dragColor(event)");
@@ -112,16 +116,19 @@ function resetDragLocations(){
         dragLocations[i].removeAttribute("style");
     }
 }
-function replaceCursor(e){
-        const pill = e.target.cloneNode(true);
-    if(e.target.classList.contains("pill")){
-        //Adds Custom Cursor to HTML
-        html.appendChild(pill);
-        //Disables Default Cursor
-        html.classList.add("no-cursor");
-        //Add Class to Custom Cursor
-        pill.classList.add("current-cursor");
-        document.onmousemove = trackCursorPos;
+function createPaintBubble(e){
+    paintBubble.style.backgroundColor = currentPaintColor;
+    if(html.classList.contains(customCursorPaintBrush)){
+        if(e.target.className == "color-input" && !document.getElementsByClassName("paint-bubble")[0]){
+            //Adds Paint Bubble to HTML
+            html.appendChild(paintBubble);
+            //Adds Listener to document for onmousemove
+            document.onmousemove = trackCursorPos;
+            //Set Paint Bubble Display
+            paintBubble.style.display = "inline";
+            //Debug
+            console.log("I am running");
+        }
     }
     function trackCursorPos(event) {
         var eventDoc, doc, body, pageX, pageY;
@@ -138,8 +145,8 @@ function replaceCursor(e){
             event.pageY = event.clientY +
             (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
         }
-        document.getElementsByClassName("current-cursor")[0].style.top = event.pageY - 10 + "px";
-        document.getElementsByClassName("current-cursor")[0].style.left = event.pageX - 25 + "px";
+        document.getElementsByClassName("paint-bubble")[0].style.top = event.pageY + -20 + "px";
+        document.getElementsByClassName("paint-bubble")[0].style.left = event.pageX + 20 + "px";
     }
     //Debug
     //console.log("I am running");
@@ -162,7 +169,7 @@ function paint(event){
         currentPaintColor = event.target.value;
         console.log(currentPaintColor);
     }
-    if(html.classList.contains("custom-cursor-paint-brush")){
+    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "drag-location"){
         event.target.style.backgroundColor = currentPaintColor;
         event.target.style.borderColor = "#18CAE6";
         //Debug
@@ -253,7 +260,7 @@ function addColorModalColors(){
             var cellData = document.createElement("button");
             cellData.setAttribute("class", "color-input");
             cellData.setAttribute("value", allCSSColorNames[inputCount]);
-            cellData.setAttribute("onclick", "paint(event)");
+            cellData.setAttribute("onclick", "paint(event); createPaintBubble(event)");
             cellData.title = allCSSColorNames[inputCount];
             cellData.style.backgroundColor = allCSSColorNames[inputCount];
             cell.appendChild(cellData);
