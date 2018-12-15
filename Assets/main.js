@@ -10,6 +10,7 @@ const allCSSColorNames = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure"
 const dragBlock = document.getElementById("drag-block");
 const draggables = document.getElementsByClassName("draggable");
 const dragLocations = document.getElementsByClassName("drag-location");
+const allButtons = document.getElementsByTagName("button");
 const colorModal = document.getElementById("color-modal");
 const colorModalButton = document.getElementById("color-modal-reveal-button");
 const colorModalClose = document.getElementById("color-modal-close");
@@ -204,10 +205,18 @@ function buttonHover(event){
         // console.log(currentStyle.childNodes[0]);
     }
 }
+function buttonSetActive() {
+    if(!this.classList.contains("button-active")){ this.classList.add("button-active");};
+}
+function buttonUnsetActive() {
+    if(this.classList.contains("button-active")){ this.classList.remove("button-active");};
+}
 //Event Listeners
 window.addEventListener("load", addDragLocation);
 colorModalButton.addEventListener("click", () => {colorModal.style.display = "block";});
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
+for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mousedown", buttonSetActive); };
+for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mouseup", buttonUnsetActive); };
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
