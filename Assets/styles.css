@@ -96,7 +96,7 @@ header .page-title{
 .modal-content form input[type="color"]{
     border: none;
 }
-#color-modal-reveal-button{
+main button{
     background: var(--buttonColor);
     border: 2px outset var(--buttonBorderColor);
     outline: none;
