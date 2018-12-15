@@ -164,6 +164,7 @@ main{
 .color-input{
     height: 100%;
     width: 100%;
+    border: 2px outset var(--borderColor);
 }
 .tool-box{
     display: inline-flex;
