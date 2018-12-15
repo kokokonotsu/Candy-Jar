@@ -85,14 +85,14 @@ function dragLeave(event){
 }
 function addDragLocation(){
     const table = document.getElementsByClassName("coloring-table")[0];
-    const presetTableCell = document.getElementsByClassName("table-cell")[0];
     const tableColNum = 9;
     const tableRowNum = 9;
     const tableBody = document.createElement("tbody");
+    tableBody.setAttribute("class", "coloring-table-body");
     table.appendChild(tableBody);
     for(let i = 0; i <= tableRowNum; i++){
         var tableRow = document.createElement("tr");
-        table.appendChild(tableRow);
+        tableBody.appendChild(tableRow);
         for(let j = 0; j <= tableColNum; j++){
             var cellData = document.createElement("div");
             cellData.setAttribute("class", "drag-location");
