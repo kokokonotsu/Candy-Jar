@@ -225,8 +225,8 @@ function buttonUnsetActive() {
 }
 //Event Listeners
 window.addEventListener("load", addDragLocation);
-colorModalContentButton.addEventListener("click", () => {colorModalContent.style.display = "block";});
-colorModalContentClose.addEventListener("click", () => {colorModalContent.style.display = "none";});
+colorModalContentButton.addEventListener("click", () => { if (colorModalContent.style.display == "none"){ colorModalContent.style.display = "block"; } else if (colorModalContent.style.display != "none"){ colorModalContent.style.display = "none" }; });
+colorModalContentClose.addEventListener("click", () => { colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mousedown", buttonSetActive); };
 for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mouseup", buttonUnsetActive); };
