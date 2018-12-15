@@ -1,6 +1,8 @@
 :root{
     --candyColor: #dddddd;
     --headerColor: #333333;
+    --headerTextShadowOverColor: #555555;
+    --headerTextShadowUnderColor: #111111;
     --headerFontColor: #dddddd;
     --fontColor: #dddddd;
     --bodyColor: #777777;
@@ -43,11 +45,12 @@ header{
     justify-content: center;
     align-items: center;
     background-color: var(--headerColor);
+    border-bottom: 2px outset var(--borderColor);
 }
 header .page-title{
     font-family: 'Major Mono Display', monospace;
-    color: var(--headerFontColor);
-    text-decoration: underline;
+    color: var(--headerColor);
+    text-shadow: 1px 1px 2px var(--headerTextShadowUnderColor), 1px -1px 2px var(--headerTextShadowOverColor), -1px 1px 2px var(--headerTextShadowUnderColor), -1px -1px 2px var(--headerTextShadowOverColor);
     margin: 0;
     font-size: 3rem;
 }
