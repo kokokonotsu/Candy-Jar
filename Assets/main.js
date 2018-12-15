@@ -156,15 +156,31 @@ function paint(event){
 //Add Hover for Big Hand to all Buttons
 function buttonHover(){
     const allButtons = document.getElementsByTagName("button");
-    const bigHandPointerCSS = `button:hover{ cursor: url("Assets/Large-Hand-Pointer-Resized.png") 20 1, auto; }`;
+    var hoverCSS;
     const hoverStyle = document.createElement("style");
+    if(document.getElementsByTagName("style").length == 0){html.appendChild(hoverStyle);};
+    console.log(document.getElementsByTagName("style"));
     if(html.classList.contains("custom-cursor-big-hand-pointer")){
+        hoverCSS = `button:hover{ cursor: url("Assets/Large-Hand-Pointer-Resized.png") 20 1, auto; }`;
         if(hoverStyle.style.cssText){
-            hoverStyle.style.cssText = bigHandPointerCSS;
+            hoverStyle.style.cssText = hoverCSS;
         } else {
-            hoverStyle.appendChild(document.createTextNode(bigHandPointerCSS));
+            hoverStyle.appendChild(document.createTextNode(hoverCSS));
         }
-        html.appendChild(hoverStyle);
+    } else if(html.classList.contains("custom-cursor-paint-brush")){
+        hoverCSS = `button:hover{ cursor: url("Assets/Paint-Brush-Cursor-BW-With-Outline-Resized.png") 0 0, auto; }`;
+        if(hoverStyle.style.cssText){
+            hoverStyle.style.cssText = hoverCSS;
+        } else {
+            hoverStyle.appendChild(document.createTextNode(hoverCSS));
+        }
+    } else if(html.classList.contains("custom-cursor-large-pointer")){
+        hoverCSS = `button:hover{ cursor: url("Assets/Large-Pointer.png") 0 0, auto; }`;
+        if(hoverStyle.style.cssText){
+            hoverStyle.style.cssText = hoverCSS;
+        } else {
+            hoverStyle.appendChild(document.createTextNode(hoverCSS));
+        }
     }
 }
 //Event Listeners
@@ -173,5 +189,5 @@ colorModalButton.addEventListener("click", () => {colorModal.style.display = "bl
 colorModalClose.addEventListener("click", () => {colorModal.style.display = "none";});
 window.addEventListener("click", () => { if(event.target == colorModal){ colorModal.style.display = "none"; }; });
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
-window.addEventListener("load", buttonHover);
+for(let i = 0; i < tools.length; i++){ tools[i].addEventListener("click", buttonHover); };
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
