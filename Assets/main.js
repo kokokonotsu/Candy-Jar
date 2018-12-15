@@ -119,13 +119,13 @@ function resetDragLocations(){
 function createPaintBubble(e){
     paintBubble.style.backgroundColor = currentPaintColor;
     if(html.classList.contains(customCursorPaintBrush)){
+        //Set Paint Bubble Display
+        paintBubble.style.display = "inline";
         if(e.target.className == "color-input" && !document.getElementsByClassName("paint-bubble")[0]){
             //Adds Paint Bubble to HTML
             html.appendChild(paintBubble);
             //Adds Listener to document for onmousemove
             document.onmousemove = trackCursorPos;
-            //Set Paint Bubble Display
-            paintBubble.style.display = "inline";
             //Debug
             console.log("I am running");
         }
@@ -155,8 +155,8 @@ function createPaintBubble(e){
 function customCursor(event){
     if(event.target.id == "big-hand-pointer-png" || event.target.id == "big-hand-pointer-button" || event.target.id == "big-hand-pointer-li"){ html.classList.add("custom-cursor-big-hand-pointer"); }
     else if(event.target.id != "big-hand-pointer-png" || event.target.id != "big-hand-point-button"|| event.target.id != "big-hand-pointer-li"){ html.classList.remove("custom-cursor-big-hand-pointer"); }
-    if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){ html.classList.add("custom-cursor-paint-brush"); }
-    else if(event.target.id != "paint-brush-cursor-png" || event.target.id != "paint-brush-cursor-button" || event.target.id != "paint-brush-li"){ html.classList.remove("custom-cursor-paint-brush"); }
+    if(event.target.id == "paint-brush-cursor-png" || event.target.id == "paint-brush-cursor-button" || event.target.id == "paint-brush-li"){ html.classList.add("custom-cursor-paint-brush"); if(document.getElementsByClassName("paint-bubble")[0]){ paintBubble.style.display = "inline"; }; }
+    else if(event.target.id != "paint-brush-cursor-png" || event.target.id != "paint-brush-cursor-button" || event.target.id != "paint-brush-li"){ html.classList.remove("custom-cursor-paint-brush"); paintBubble.style.display = "none"; }
     if(event.target.id == "large-cursor-png" || event.target.id == "large-cursor-button" || event.target.id == "large-cursor-li"){
         html.classList.add("custom-cursor-large-cursor");
     } else if (event.target.id != "large-cursor-png" || event.target.id != "large-cursor-button" || event.target.id != "large-cursor-li"){
