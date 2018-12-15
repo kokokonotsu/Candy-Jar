@@ -6,6 +6,8 @@
     --bodyColor: #777777;
     --toolBarColor: #333333;
     --toolBarBorderColor: #555555;
+    --buttonColor: #333333;
+    --buttonBorderColor: #555555;
     --mainColor: #dddddd;
     --tronBlue: #18CAE6;
     --modalColor: #444444;
@@ -47,6 +49,9 @@ header .page-title{
     text-decoration: underline;
     margin: 0;
     font-size: 3rem;
+}
+.button-active{
+    border: 2px inset var(--buttonBorderColor);
 }
 .modal{
     display: none;
@@ -91,14 +96,10 @@ header .page-title{
 .modal-content form input[type="color"]{
     border: none;
 }
-#add-pill-button{
-    position: absolute;
-    bottom: 2%;
-    right: 15%;
-    /* background: none;
-    border: none;
-    outline: none; */
-    cursor: pointer;
+#color-modal-reveal-button{
+    background: var(--buttonColor);
+    border: 2px outset var(--buttonBorderColor);
+    outline: none;
 }
 .pill{
     height: 50px;
