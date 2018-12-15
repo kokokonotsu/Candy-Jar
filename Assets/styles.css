@@ -2,7 +2,7 @@
     --candyColor: #dddddd;
     --headerColor: #333333;
     --headerFontColor: #dddddd;
-    --fontColor: #111111;
+    --fontColor: #dddddd;
     --bodyColor: #777777;
     --toolBarColor: #333333;
     --toolBarBorderColor: #555555;
@@ -63,7 +63,8 @@ header .page-title{
 }
 main{
     position: relative;
-    display: flex;
+    display: inline-flex;
+    /* display: flex; */
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -72,21 +73,26 @@ main{
     overflow: hidden;
 }
 main button{
+    display: inline;
     background: var(--buttonColor);
     border: 2px outset var(--buttonBorderColor);
     outline: none;
+    font-family: "Major Mono Display", monospace;
+    color: var(--fontColor);
+}
+.main-button-container{
+    justify-self: flex-end;
+    align-self: flex-end;
 }
 .main-content-container{
-    display: inline-grid;
-    grid-template-rows: repeat(8, auto);
-    grid-template-columns: repeat(8, 3vw);
+    display: block;
     height: 100%;
 }
 .modal-container{
+    display: inline-block;
     height: 100%;
     width: 20%;
 }
-
 /* Commented out pending necessity */
 /* .modal{
     display: none;
@@ -101,7 +107,7 @@ main button{
     background-color: #00000060;
 } */
 .modal-content{
-    display: none;
+    display: block;
     position: relative;
     /* display: flex;
     flex-direction: column;
@@ -109,8 +115,8 @@ main button{
     align-items: center; */
     background-color: var(--modalColor);
     border: 2px solid var(--bodyColor);
-    width: 30%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     animation: fade-in;
     animation-duration: 0.4s;
 }
