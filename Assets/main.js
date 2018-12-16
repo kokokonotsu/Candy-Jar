@@ -88,7 +88,7 @@ function dragLeave(event){
         event.target.style.borderStyle = "solid";
     }
 }
-function addDragLocation(){
+function addSquares(){
     const table = document.getElementsByClassName("coloring-table")[0];
     const tableColNum = 9;
     const tableRowNum = 9;
@@ -292,7 +292,7 @@ function addColorModalColors(){
     }
 }
 //Event Listeners
-window.addEventListener("load", addDragLocation);
+window.addEventListener("load", addSquares);
 colorModalContentButton.addEventListener("click", () => { if (colorModalContent.style.display == "none"){ colorModalContent.style.display = "block"; } else if (colorModalContent.style.display != "none"){ colorModalContent.style.display = "none" }; });
 colorModalContentClose.addEventListener("click", () => { colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
