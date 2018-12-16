@@ -106,7 +106,7 @@ function addDragLocation(){
             // cellData.setAttribute("ondragenter", "dragEnter(event)");
             // cellData.setAttribute("ondragleave", "dragLeave(event)");
             cellData.setAttribute("onclick", "paint(event)");
-            cellData.setAttribute("onmouseover", "paint(event)");
+            cellData.setAttribute("onmouseover", "paintOver(event)");
             tableRow.appendChild(cellData);
         }
     }
@@ -166,6 +166,23 @@ function customCursor(event){
 }
 //Paint Brush Painting
 function paint(event){
+    if(event.target.classList.contains("color-input")){
+        currentPaintColor = event.target.value;
+        console.log(currentPaintColor);
+    }
+    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "drag-location"){
+        event.target.style.backgroundColor = currentPaintColor;
+        // event.target.style.borderColor = "#18CAE6";
+        //Debug
+        //console.log("I can paint with this");
+    } else if(html.classList.contains("custom-cursor-large-cursor")) {
+        event.target.style.backgroundColor = currentPaintColor;
+    } else {
+        //Debug
+        //console.log("I cannot paint with this");
+    }
+}
+function paintOver(event){
     if(event.target.classList.contains("color-input")){
         currentPaintColor = event.target.value;
         console.log(currentPaintColor);
