@@ -2,8 +2,8 @@
     --candyColor: #dddddd;
     --headerColor: #333333;
     --headerTitleColor: #2e2e2e; /* Optional: #333333 */
-    --headerTextShadowOverColor: #555555;
-    --headerTextShadowUnderColor: #111111;
+    --TextShadowOverColor: #555555;
+    --TextShadowUnderColor: #111111;
     --headerFontColor: #dddddd;
     --fontColor: #dddddd;
     --bodyColor: #777777;
@@ -51,12 +51,14 @@ header{
 header .page-title{
     font-family: 'Major Mono Display', monospace;
     color: var(--headerTitleColor);
-    text-shadow: 1px 1px 2px var(--headerTextShadowUnderColor), 1px -1px 2px var(--headerTextShadowOverColor), -1px 1px 2px var(--headerTextShadowUnderColor), -1px -1px 2px var(--headerTextShadowOverColor);
     margin: 0;
     font-size: 3rem;
 }
 .button-active{
     border: 2px inset var(--buttonBorderColor);
+}
+.text-shadow{
+    text-shadow: 1px 1px 2px var(--TextShadowUnderColor), 1px -1px 2px var(--TextShadowOverColor), -1px 1px 2px var(--TextShadowUnderColor), -1px -1px 2px var(--TextShadowOverColor);
 }
 .pill{
     height: 50px;
