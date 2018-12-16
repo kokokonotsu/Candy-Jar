@@ -175,8 +175,6 @@ function paint(event){
         // event.target.style.borderColor = "#18CAE6";
         //Debug
         //console.log("I can paint with this");
-    } else if (html.classList.contains("custom-cursor-large-cursor") && event.target.className == "drag-location"){
-        event.target.style.backgroundColor = currentPaintColor
     } else {
         //Debug
         //console.log("I cannot paint with this");
@@ -237,12 +235,12 @@ function buttonHover(event){
 function buttonSetActive(e) {
     if(!e.target.classList.contains("button-active")){ e.target.classList.add("button-active"); e.target.style.borderStyle = "inset"; };
     //Debug
-    console.log("I am running");
+    //console.log("I am running");
 }
 function buttonUnsetActive(e) {
     if(e.target.classList.contains("button-active")){ e.target.classList.remove("button-active"); e.target.style.borderStyle = "outset"; };
     //Debug
-    console.log("I am running");
+    //console.log("I am running");
 }
 //Change Active Color
 function changeColor(e){
@@ -282,9 +280,9 @@ colorModalContentButton.addEventListener("click", () => { if (colorModalContent.
 colorModalContentClose.addEventListener("click", () => { colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
 window.addEventListener("load", addColorModalColors);
-for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmousedown", "buttonSetActive(event)"); console.log("I am running"); };
-for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmouseup", "buttonUnsetActive(event)"); };
-window.addEventListener("mousedown", () => { isMouseDown = true; /* Debug */ /* console.log(isMouseDown); */ });
-window.addEventListener("mouseup", () => { isMouseDown = false; /* Debug */ /* console.log(isMouseDown); */ });
+window.setTimeout( () => { for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmousedown", "buttonSetActive(event)"); /* Debug */ /* console.log(isMouseDown); */ }}, 100);
+window.setTimeout( () => { for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmouseup", "buttonUnsetActive(event)"); /* Debug */ /* console.log(isMouseDown); */ }}, 100);
+// window.addEventListener("mousedown", () => { isMouseDown = true; /* Debug */ /* console.log(isMouseDown); */ });
+// window.addEventListener("mouseup", () => { isMouseDown = false; /* Debug */ /* console.log(isMouseDown); */ });
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
 console.log(allButtons.length);
