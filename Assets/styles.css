@@ -85,8 +85,14 @@ main{
     overflow: hidden;
     width: 100%;
 }
+.main-button-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
 .main-button-container button{
-    display: inline;
+    display: inline-block;
     background: var(--buttonColor);
     border: 2px outset var(--buttonBorderColor);
     outline: none;
@@ -94,6 +100,7 @@ main{
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--fontColor);
+    width: 30%;
 }
 .main-content-container{
     display: inline-block;
