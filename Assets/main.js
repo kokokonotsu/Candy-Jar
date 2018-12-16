@@ -97,6 +97,7 @@ function addSquares(){
     table.appendChild(tableBody);
     for(let i = 0; i <= tableRowNum; i++){
         var tableRow = document.createElement("tr");
+        tableRow.classList.add("coloring-table-row");
         tableBody.appendChild(tableRow);
         for(let j = 0; j <= tableColNum; j++){
             var cellData = document.createElement("div");
@@ -291,7 +292,18 @@ function addColorModalColors(){
         }
     }
 }
-$(square)
+// $(squares).click(function(){
+//     if($(this).hasClass("candidate")){
+//         $(this).addClass("highlighted");
+//         //Select the adjacent square class elements
+//         //Horizontal Adjacent
+//         $(this).prev(".square").addClass("candidate");
+//         $(this).next(".square").addClass("candidate");
+//         //Vertical Adjacent
+//         let i = $(this).index();
+//         $(this).parent(".coloring-table-row").prev(".coloring-table-row").children('')
+//     }
+// })
 //Event Listeners
 window.addEventListener("load", addSquares);
 colorModalContentButton.addEventListener("click", () => { if (colorModalContent.style.display == "none"){ colorModalContent.style.display = "block"; } else if (colorModalContent.style.display != "none"){ colorModalContent.style.display = "none" }; });
