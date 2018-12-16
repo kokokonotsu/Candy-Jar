@@ -57,10 +57,13 @@ header .page-title{
     font-size: 3rem;
 }
 .button-active{
-    border: 2px inset var(--buttonBorderColor);
+    border-style: inset;
 }
 .text-shadow{
     text-shadow: 1px 1px 2px var(--TextShadowUnderColor), 1px -1px 2px var(--TextShadowOverColor), -1px 1px 2px var(--TextShadowUnderColor), -1px -1px 2px var(--TextShadowOverColor);
+}
+.text-shadow-small{
+    text-shadow: 0.5px 0.5px 1px var(--TextShadowUnderColor), 0.5px -0.5px 0.5px var(--TextShadowOverColor), -0.5px 0.5px 0.5px var(--TextShadowUnderColor), -0.5px -0.5px -px var(--TextShadowOverColor);
 }
 .pill{
     height: 50px;
@@ -88,6 +91,8 @@ main{
     border: 2px outset var(--buttonBorderColor);
     outline: none;
     font-family: "Major Mono Display", monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
     color: var(--fontColor);
 }
 .main-content-container{

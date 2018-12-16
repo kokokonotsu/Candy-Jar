@@ -32,10 +32,10 @@ for(let i = 0; i < draggables.length; i++){
 }
 //Set Attributes for all Non-Jar-Drag-Locations
 for(let i = 0; i < dragLocations.length; i++){
-    dragLocations[i].setAttribute("ondragover", "allowDrop(event)");
-    dragLocations[i].setAttribute("ondrop", "dropColor(event)");
-    dragLocations[i].setAttribute("ondragenter", "dragEnter(event)");
-    dragLocations[i].setAttribute("ondragleave", "dragLeave(event)");
+    // dragLocations[i].setAttribute("ondragover", "allowDrop(event)");
+    // dragLocations[i].setAttribute("ondrop", "dropColor(event)");
+    // dragLocations[i].setAttribute("ondragenter", "dragEnter(event)");
+    // dragLocations[i].setAttribute("ondragleave", "dragLeave(event)");
     dragLocations[i].setAttribute("onclick", "paint(event)");
 }
 //Set Attributes for drop-click-button
@@ -101,11 +101,12 @@ function addDragLocation(){
         for(let j = 0; j <= tableColNum; j++){
             var cellData = document.createElement("div");
             cellData.setAttribute("class", "drag-location");
-            cellData.setAttribute("ondragover", "allowDrop(event)");
-            cellData.setAttribute("ondrop", "drop(event); dropColor(event)");
-            cellData.setAttribute("ondragenter", "dragEnter(event)");
-            cellData.setAttribute("ondragleave", "dragLeave(event)");
+            // cellData.setAttribute("ondragover", "allowDrop(event)");
+            // cellData.setAttribute("ondrop", "drop(event); dropColor(event)");
+            // cellData.setAttribute("ondragenter", "dragEnter(event)");
+            // cellData.setAttribute("ondragleave", "dragLeave(event)");
             cellData.setAttribute("onclick", "paint(event)");
+            cellData.setAttribute("onmouseover", "paint(event)");
             tableRow.appendChild(cellData);
         }
     }
@@ -127,7 +128,7 @@ function createPaintBubble(e){
             //Adds Listener to document for onmousemove
             document.onmousemove = trackCursorPos;
             //Debug
-            console.log("I am running");
+            //console.log("I am running");
         }
     }
     function trackCursorPos(event) {
@@ -171,12 +172,14 @@ function paint(event){
     }
     if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "drag-location"){
         event.target.style.backgroundColor = currentPaintColor;
-        event.target.style.borderColor = "#18CAE6";
+        // event.target.style.borderColor = "#18CAE6";
         //Debug
-        console.log("I can paint with this");
+        //console.log("I can paint with this");
+    } else if (html.classList.contains("custom-cursor-large-cursor") && event.target.className == "drag-location"){
+        event.target.style.backgroundColor = currentPaintColor
     } else {
         //Debug
-        console.log("I cannot paint with this");
+        //console.log("I cannot paint with this");
     }
 }
 //Add Hover for Big Hand to all Buttons
@@ -231,11 +234,15 @@ function buttonHover(event){
         // console.log(currentStyle.childNodes[0]);
     }
 }
-function buttonSetActive() {
-    if(!this.classList.contains("button-active")){ this.classList.add("button-active");};
+function buttonSetActive(e) {
+    if(!e.target.classList.contains("button-active")){ e.target.classList.add("button-active"); e.target.style.borderStyle = "inset"; };
+    //Debug
+    console.log("I am running");
 }
-function buttonUnsetActive() {
-    if(this.classList.contains("button-active")){ this.classList.remove("button-active");};
+function buttonUnsetActive(e) {
+    if(e.target.classList.contains("button-active")){ e.target.classList.remove("button-active"); e.target.style.borderStyle = "outset"; };
+    //Debug
+    console.log("I am running");
 }
 //Change Active Color
 function changeColor(e){
@@ -275,7 +282,9 @@ colorModalContentButton.addEventListener("click", () => { if (colorModalContent.
 colorModalContentClose.addEventListener("click", () => { colorModalContent.style.display = "none";});
 document.getElementById("reset-button").addEventListener("click", resetDragLocations);
 window.addEventListener("load", addColorModalColors);
-for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mousedown", buttonSetActive); };
-for(let i = 0; i < allButtons.length; i++){ allButtons[i].addEventListener("mouseup", buttonUnsetActive); };
+for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmousedown", "buttonSetActive(event)"); console.log("I am running"); };
+for(let i = 0; i < allButtons.length; i++){ allButtons[i].setAttribute("onmouseup", "buttonUnsetActive(event)"); };
+window.addEventListener("mousedown", () => { isMouseDown = true; /* Debug */ /* console.log(isMouseDown); */ });
+window.addEventListener("mouseup", () => { isMouseDown = false; /* Debug */ /* console.log(isMouseDown); */ });
 // window.addEventListener("load", () => { TweenLite.to(dragBlock, 2, {throwProps:{x:500, y:-300}}); });
-console.log(allCSSColorNames.length);
+console.log(allButtons.length);
