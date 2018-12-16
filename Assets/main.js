@@ -9,7 +9,7 @@ const bigHandPointer = `<svg enable-background="new 0 0 595.28 841.89" viewBox="
 const allCSSColorNames = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
 const dragBlock = document.getElementById("drag-block");
 const draggables = document.getElementsByClassName("draggable");
-const dragLocations = document.getElementsByClassName("drag-location");
+const dragLocations = document.getElementsByClassName("square");
 const allButtons = document.getElementsByTagName("button");
 const colorModalContent = document.getElementById("color-modal-content");
 const colorModalContentButton = document.getElementById("color-modal-reveal-button");
@@ -30,7 +30,7 @@ for(let i = 0; i < draggables.length; i++){
     draggables[i].setAttribute("ondragstart", "dragColor(event)");
     draggables[i].setAttribute("draggable", "true");
 }
-//Set Attributes for all Non-Jar-Drag-Locations
+//Set Attributes for all Non-Jar-squares
 for(let i = 0; i < dragLocations.length; i++){
     // dragLocations[i].setAttribute("ondragover", "allowDrop(event)");
     // dragLocations[i].setAttribute("ondrop", "dropColor(event)");
@@ -58,7 +58,7 @@ function drag(event){
 function drop(event){
     event.preventDefault();
     var dropElement = event.dataTransfer.getData("element");
-    if(event.target.className == "drag-location"){event.target.appendChild(document.getElementById(dropElement));}
+    if(event.target.className == "square"){event.target.appendChild(document.getElementById(dropElement));}
     else if(event.target.className == "reset-button"){ resetDragLocations(); }
     else if(event.target.classList.contains("drop-click")){ event.target.click(); /* Debug */ /*console.log("I am running"); */ };
 }
@@ -70,7 +70,7 @@ function dropColor(event){
     event.preventDefault();
     var colorOne = event.dataTransfer.getData("colorOne");
     var colorTwo = event.dataTransfer.getData("colorTwo");
-    if(event.target.className == "drag-location"){
+    if(event.target.className == "square"){
         event.target.style.backgroundColor = colorOne;
         event.target.style.borderColor = colorTwo;
         event.target.style.borderStyle = "solid";
@@ -79,12 +79,12 @@ function dropColor(event){
     else if(event.target.classList.contains("drop-click")){ event.target.click(); /*Debug */ /*console.log("I am running");*/ };
 }
 function dragEnter(event){
-    if(event.target.classList.contains("drag-location")){
+    if(event.target.classList.contains("square")){
         event.target.style.borderStyle = "dashed";
     }
 }
 function dragLeave(event){
-    if(event.target.className == "drag-location"){
+    if(event.target.className == "square"){
         event.target.style.borderStyle = "solid";
     }
 }
@@ -100,7 +100,7 @@ function addDragLocation(){
         tableBody.appendChild(tableRow);
         for(let j = 0; j <= tableColNum; j++){
             var cellData = document.createElement("div");
-            cellData.setAttribute("class", "drag-location");
+            cellData.setAttribute("class", "square");
             // cellData.setAttribute("ondragover", "allowDrop(event)");
             // cellData.setAttribute("ondrop", "drop(event); dropColor(event)");
             // cellData.setAttribute("ondragenter", "dragEnter(event)");
@@ -111,7 +111,7 @@ function addDragLocation(){
         }
     }
 }
-//Removes all DOM-styling on Drag-Locations
+//Removes all DOM-styling on squares
 function resetDragLocations(){
     for(let i = 0; i < dragLocations.length; i++){
         dragLocations[i].removeAttribute("style");
@@ -170,7 +170,7 @@ function paint(event){
         currentPaintColor = event.target.value;
         console.log(currentPaintColor);
     }
-    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "drag-location"){
+    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "square"){
         event.target.style.backgroundColor = currentPaintColor;
         // event.target.style.borderColor = "#18CAE6";
         //Debug
@@ -187,7 +187,7 @@ function paintOver(event){
         currentPaintColor = event.target.value;
         console.log(currentPaintColor);
     }
-    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "drag-location"){
+    if(html.classList.contains("custom-cursor-paint-brush") && event.target.className == "square"){
         event.target.style.backgroundColor = currentPaintColor;
         // event.target.style.borderColor = "#18CAE6";
         //Debug
