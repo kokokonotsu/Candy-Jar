@@ -9,7 +9,7 @@ const bigHandPointer = `<svg enable-background="new 0 0 595.28 841.89" viewBox="
 const allCSSColorNames = ["AliceBlue","AntiqueWhite","Aqua","Aquamarine","Azure","Beige","Bisque","Black","BlanchedAlmond","Blue","BlueViolet","Brown","BurlyWood","CadetBlue","Chartreuse","Chocolate","Coral","CornflowerBlue","Cornsilk","Crimson","Cyan","DarkBlue","DarkCyan","DarkGoldenRod","DarkGray","DarkGrey","DarkGreen","DarkKhaki","DarkMagenta","DarkOliveGreen","Darkorange","DarkOrchid","DarkRed","DarkSalmon","DarkSeaGreen","DarkSlateBlue","DarkSlateGray","DarkSlateGrey","DarkTurquoise","DarkViolet","DeepPink","DeepSkyBlue","DimGray","DimGrey","DodgerBlue","FireBrick","FloralWhite","ForestGreen","Fuchsia","Gainsboro","GhostWhite","Gold","GoldenRod","Gray","Grey","Green","GreenYellow","HoneyDew","HotPink","IndianRed","Indigo","Ivory","Khaki","Lavender","LavenderBlush","LawnGreen","LemonChiffon","LightBlue","LightCoral","LightCyan","LightGoldenRodYellow","LightGray","LightGrey","LightGreen","LightPink","LightSalmon","LightSeaGreen","LightSkyBlue","LightSlateGray","LightSlateGrey","LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow","YellowGreen"];
 const dragBlock = document.getElementById("drag-block");
 const draggables = document.getElementsByClassName("draggable");
-const dragLocations = document.getElementsByClassName("square");
+const squares = document.getElementsByClassName("square");
 const allButtons = document.getElementsByTagName("button");
 const colorModalContent = document.getElementById("color-modal-content");
 const colorModalContentButton = document.getElementById("color-modal-reveal-button");
@@ -31,12 +31,12 @@ for(let i = 0; i < draggables.length; i++){
     draggables[i].setAttribute("draggable", "true");
 }
 //Set Attributes for all Non-Jar-squares
-for(let i = 0; i < dragLocations.length; i++){
-    // dragLocations[i].setAttribute("ondragover", "allowDrop(event)");
-    // dragLocations[i].setAttribute("ondrop", "dropColor(event)");
-    // dragLocations[i].setAttribute("ondragenter", "dragEnter(event)");
-    // dragLocations[i].setAttribute("ondragleave", "dragLeave(event)");
-    dragLocations[i].setAttribute("onclick", "paint(event)");
+for(let i = 0; i < squares.length; i++){
+    // squares[i].setAttribute("ondragover", "allowDrop(event)");
+    // squares[i].setAttribute("ondrop", "dropColor(event)");
+    // squares[i].setAttribute("ondragenter", "dragEnter(event)");
+    // squares[i].setAttribute("ondragleave", "dragLeave(event)");
+    squares[i].setAttribute("onclick", "paint(event)");
 }
 //Set Attributes for drop-click-button
 for(let i = 0; i < dropClickLocations.length; i++){
@@ -113,8 +113,8 @@ function addSquares(){
 }
 //Removes all DOM-styling on squares
 function resetDragLocations(){
-    for(let i = 0; i < dragLocations.length; i++){
-        dragLocations[i].removeAttribute("style");
+    for(let i = 0; i < squares.length; i++){
+        squares[i].removeAttribute("style");
     }
 }
 function createPaintBubble(e){
@@ -291,6 +291,7 @@ function addColorModalColors(){
         }
     }
 }
+$(square)
 //Event Listeners
 window.addEventListener("load", addSquares);
 colorModalContentButton.addEventListener("click", () => { if (colorModalContent.style.display == "none"){ colorModalContent.style.display = "block"; } else if (colorModalContent.style.display != "none"){ colorModalContent.style.display = "none" }; });
