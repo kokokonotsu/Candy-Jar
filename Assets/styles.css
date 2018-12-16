@@ -173,6 +173,7 @@ main{
     height: 20px;
     width: 100%;
     border: 2px outset var(--borderColor);
+    outline: none;
 }
 .paint-bubble{
     display: none;
