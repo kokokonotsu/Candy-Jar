@@ -1,0 +1,29 @@
+.jar-container{
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    height: 15rem;
+    width: 10rem;
+    fill: white;
+}
+.jar-ul{
+    /* display: inline-flex;
+    flex-direction: column; */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 70%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.jar-li{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    border: none;
+    margin: 0;
+}
