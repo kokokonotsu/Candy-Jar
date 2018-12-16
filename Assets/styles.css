@@ -4,6 +4,7 @@
     --headerTitleColor: #2e2e2e; /* Optional: #333333 */
     --TextShadowOverColor: #555555;
     --TextShadowUnderColor: #111111;
+    --TextShadowFontColor: #2e2e2e;
     --headerFontColor: #dddddd;
     --fontColor: #dddddd;
     --bodyColor: #777777;
@@ -15,6 +16,7 @@
     --mainColor: #dddddd;
     --tronBlue: #18CAE6;
     --modalColor: #444444;
+    --modalTitleFontColor: #3b3b3b;
 }
 @font-face{
     font-family: Tron;
@@ -46,7 +48,7 @@ header{
     justify-content: center;
     align-items: center;
     background-color: var(--headerColor);
-    border-bottom: 2px outset var(--borderColor);
+    border-bottom: 2px solid var(--borderColor);
 }
 header .page-title{
     font-family: 'Major Mono Display', monospace;
@@ -139,7 +141,7 @@ main{
     margin: 0;
     display: block;
     font-family: "Major Mono Display", monospace;
-    color: var(--headerFontColor);
+    color: var(--modalTitleFontColor);
 }
 #color-modal-close{
     float: right;
