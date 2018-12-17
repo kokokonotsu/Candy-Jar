@@ -1,0 +1,55 @@
+:root{
+    --candyColor: #dddddd;
+    --headerColor: #333333;
+    --headerTitleColor: #2e2e2e; /* Optional: #333333 */
+    --TextShadowOverColor: #555555;
+    --TextShadowUnderColor: #111111;
+    --TextShadowFontColor: #2e2e2e;
+    --headerFontColor: #dddddd;
+    --fontColor: #dddddd;
+    --bodyColor: #777777;
+    --borderColor: #555555;
+    --toolBarColor: #333333;
+    --toolBarBorderColor: #555555;
+    --buttonColor: #333333;
+    --buttonBorderColor: #555555;
+    --mainColor: #dddddd;
+    --tronBlue: #18CAE6;
+    --modalColor: #444444;
+    --modalTitleFontColor: #3b3b3b;
+}
+html{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: var(--bodyColor);
+}
+header{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--headerColor);
+    border-bottom: 2px solid var(--borderColor);
+}
+header .page-title{
+    font-family: 'Major Mono Display', monospace;
+    color: var(--headerTitleColor);
+    margin: 0;
+    font-size: 3rem;
+}
+main{
+    height: 90vh;
+}
+.text-shadow{
+    text-shadow: 1px 1px 2px var(--TextShadowUnderColor), 1px -1px 2px var(--TextShadowOverColor), -1px 1px 2px var(--TextShadowUnderColor), -1px -1px 2px var(--TextShadowOverColor);
+}
