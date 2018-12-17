@@ -48,8 +48,25 @@ header .page-title{
     font-size: 3rem;
 }
 main{
-    height: 90vh;
+    height: 80vh;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: var(--headerColor);
+    border-top: 2px solid var(--borderColor);
+}
+footer #coordinate-output-label{
+    font-size: 2rem;
+    /* border: 2px outset var(--borderColor); */
+    color: var(--TextShadowFontColor);
+    padding: 5px;
 }
 .text-shadow{
     text-shadow: 1px 1px 2px var(--TextShadowUnderColor), 1px -1px 2px var(--TextShadowOverColor), -1px 1px 2px var(--TextShadowUnderColor), -1px -1px 2px var(--TextShadowOverColor);
+}
+.box-shadow{
+    box-shadow: inset 2px 2px 4px var(--TextShadowOverColor), inset 2px -2px 4px var(--TextShadowUnderColor), inset -2px 2px 4px var(--TextShadowOverColor), inset -2px -2px 4px var(--TextShadowUnderColor);
 }
